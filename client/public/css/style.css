@@ -1,0 +1,43 @@
+body{
+  font-family: 'Didact Gothic', sans-serif;
+}
+.web-title {
+  font-family: 'Luckiest Guy', cursive;;
+    -webkit-text-stroke: 1px black;
+    color: #F59E0B;
+    font-size: 65px;
+    color:#fff;
+    text-shadow:
+	    -3px -3px 3px #F59E0B,
+	    3px -3px 3px #F59E0B,
+	    -3px 3px 3px #F59E0B,
+	    -3px 3px 3px #F59E0B;
+}
+
+.logo {
+  font-family: 'Luckiest Guy', cursive;;
+    -webkit-text-stroke: 1px black;
+    color: #F59E0B;
+    font-size: 25px;
+    color:#fff;
+    text-shadow:
+	    -3px   #383837,
+	    3px   #383837,
+	    -3px   #383837,
+	    -3px  #383837;
+}
+:root {
+  --main-color: #4a76a8;
+}
+
+.bg-main-color {
+  background-color: var(--main-color);
+}
+
+.text-main-color {
+  color: var(--main-color);
+}
+
+.border-main-color {
+  border-color: var(--main-color);
+}

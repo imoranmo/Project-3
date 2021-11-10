@@ -3,44 +3,50 @@ const bcrypt = require('bcrypt');
 
 
 const userSchema = new Schema ({
-    id: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      primaryKey: true,
-      autoIncrement: true,
+    firstName: {
+      type: String,
+      required: true,
     },
-    first_name: {
-      type: DataTypes.STRING,
-      allowNull: false,
+    lastName: {
+      type: String,
     },
-    last_name: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    user_name: {
-      type: DataTypes.STRING,
-      allowNull: false,
+    userName: {
+      type: String,
+      required: true,
       unique: true
     },
     email: {
-      type: DataTypes.STRING,
-      allowNull: false,
+      type: String,
+      required: true,
       unique: true,
-      validate: {
-        isEmail: true,
-      }
+      match: /.+\@.+\..+/
     },
     bio: {
-      type: DataTypes.STRING,
-      unique: true
+      type: String
+    },
+    rating: {
+      type: Number,
+      default: 100
     },
     password: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        len: [8],
-      },
+      type: String,
+      required: true
+      // ,match: ^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$
+
     },
+    instrumentId: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'Instrument',
+      }
+    ],
+    postId: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'Post',
+      }
+    ]
+
   })
 
 

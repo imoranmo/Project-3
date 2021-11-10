@@ -9,6 +9,6 @@ const instrumentSchema = new Schema({
     }]
 })
 
-const Instruments = model('Instruments', instrumentSchema)
+const Instrument = model('Instrument', instrumentSchema)
 
-module.exports = Instruments;
+module.exports = Instrument;

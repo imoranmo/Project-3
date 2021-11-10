@@ -7,12 +7,12 @@ const commentSchema = new Schema ({
       type: String,
       required: true
     },
-    date_created: {
+    dateCreated: {
         type: Date,
         default: Date.now,
         get: (timestamp) => dateFormat(timestamp),
     },
-    user_id: {
+    userId: {
       type: String,
       required: true
     }

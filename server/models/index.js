@@ -1,7 +1,7 @@
 const User = require('./User');
-const Rhythms = require('./Rhythms');
+const Rhythms = require('./Rhythm');
 const Post = require('./Post');
-const Instruments = require('./Instruments');
+const Instruments = require('./Instrument');
 const Comment = require('./Comment');
 
 

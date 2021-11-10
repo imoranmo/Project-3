@@ -17,22 +17,19 @@ const postSchema = new Schema({
     url: {
       type: String,
     },
-    date_created: {
+    dateCreated: {
       type: Date,
       default: Date.now,
       get: (timestamp) => dateFormat(timestamp),
     },
-    rhythm_id: {
-      type: String,
-      required: true,
+    rhythmId: {
+      type: Schema.Types.ObjectId,
+      ref: 'Rhythm',
+      required: true
     },
-    user_id: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      references: {
-          model: 'users',
-          key: 'id'
-      }
+    userId: {
+      type: Schema.Types.ObjectId,
+      ref: 'User',
     },
     comments: [Comment.schema]
   })
