@@ -9,3 +9,12 @@ export const QUERY_USER = gql`
     }
   }
 `;
+
+export const QUERY_RHYTHMS = gql`
+  query rhythms {
+    rhythms{
+      _id
+      rhythm
+    }
+  }
+`;
