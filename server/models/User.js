@@ -34,6 +34,10 @@ const userSchema = new Schema ({
       // ,match: ^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$
 
     },
+    img: {
+      type: String,
+      default: "https://uwosh.edu/deanofstudents/wp-content/uploads/sites/156/2019/02/profile-default.jpg"
+    },
     instrumentId: [
       {
         type: Schema.Types.ObjectId,

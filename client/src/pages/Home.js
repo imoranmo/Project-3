@@ -11,7 +11,7 @@ import Auth from '../utils/auth';
 const Home = () => {
     const loading = false
       if (!Auth.loggedIn()) {
-        return <Redirect to="/signup" />;
+        return <Redirect to="/login" />;
       }
 
   return (

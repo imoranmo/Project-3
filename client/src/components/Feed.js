@@ -20,7 +20,7 @@ const Feed = () => {
             </div>
         </div>
         <div className="mb-4 rounded-full">
-            <input type="text" name="" data-value="{{post.id}}" id="comment" placeholder="Add a comment!" className="mt-4 w-full px-4 py-3 rounded-full bg-gray-200 mt-2 border focus:border-black focus:bg-white focus:outline-none " autofocus autocomplete required />
+            <input type="text" name="" data-value="{{post.id}}" id="comment" placeholder="Add a comment!" className="mt-4 w-full px-4 py-3 rounded-full bg-gray-200 mt-2 border focus:border-black focus:bg-white focus:outline-none " autoFocus autoComplete='true' required />
         </div>
     </div>
 </div>

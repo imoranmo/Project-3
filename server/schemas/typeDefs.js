@@ -39,6 +39,7 @@ const typeDefs = gql`
     instrument: [Instrument]
     bio: String
     rating: Int
+    img: String
 
   }
 
@@ -54,8 +55,9 @@ const typeDefs = gql`
     instruments: [Instrument]
     post (postId: ID): Post
     posts: [Post]
-    user (userId: ID): User
+    user (userId: ID, userName: String): User
     users: [User]
+    me: User
   }
 
   type Mutation {
