@@ -5,7 +5,7 @@ const rhythmsSchema = new Schema ({
     
   rhythm: 
   {
-      rhythm: {
+      name: {
         type: String,
         allowNull: false,
         unique:true

@@ -2,7 +2,7 @@ const { Schema, model} = require('mongoose');
 const bcrypt = require('bcrypt');
 
 const instrumentSchema = new Schema({
-    instrument: {
+    name: {
       type: String,
       required: true,
       trim: true

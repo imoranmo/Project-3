@@ -3,12 +3,12 @@ const { gql } = require('apollo-server-express');
 const typeDefs = gql`
   type Rhythm {
     _id: ID
-    rhythm: String
+    name: String
   }
 
   type Instrument {
     _id: ID
-    instrument: String
+    name: String
   }
 
   type Comment {
