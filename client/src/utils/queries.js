@@ -11,19 +11,9 @@ export const QUERY_USER = gql`
       bio
       img
       rating
-      instrument {
+      instruments {
         name
       }
-    }
-  }
-`;
-
-export const QUERY_ME = gql`
-  query me {
-    me {
-      _id
-      userName
-      email
     }
   }
 `;
@@ -42,6 +32,32 @@ export const QUERY_INSTRUMENTS= gql`
     instruments{
       _id
       name
+    }
+  }
+`;
+
+export const QUERY_POSTS= gql`
+  query posts {
+    posts{
+      _id
+      user {
+        userName
+        instruments {
+          name
+        }
+      }
+      dateCreated
+      title
+      content
+      rhythm {
+        name
+      }
+      comments {
+        content
+        user {
+          userName
+        }
+      }
     }
   }
 `;

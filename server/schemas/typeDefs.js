@@ -14,18 +14,18 @@ const typeDefs = gql`
   type Comment {
       _id: ID
       content: String
-      userId: ID
+      user: User
       dateCreated: String
   }
 
   type Post {
     _id: ID
-    userId: ID
-    createdDate: String
+    user: User
+    dateCreated: String
     title: String
     content: String
-    rhythmId: ID
-    comment: [Comment]
+    rhythm: Rhythm
+    comments: [Comment]
   }
 
   type User {
@@ -35,8 +35,7 @@ const typeDefs = gql`
     userName: String
     email: String
     password: String
-    post: [Post]
-    instrument: [Instrument]
+    instruments: [Instrument]
     bio: String
     rating: Int
     img: String

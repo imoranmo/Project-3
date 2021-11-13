@@ -1,19 +1,13 @@
 const { Schema, model} = require('mongoose');
-const bcrypt = require('bcrypt');
 
-const rhythmsSchema = new Schema ({
-    
-  rhythm: 
-  {
+const rhythmSchema = new Schema ({
       name: {
         type: String,
         allowNull: false,
         unique:true
       }
-  }
   })
 
-
-const Rhythm = model('Rhythm', rhythmsSchema)
+const Rhythm = model('Rhythm', rhythmSchema)
 
 module.exports = Rhythm;

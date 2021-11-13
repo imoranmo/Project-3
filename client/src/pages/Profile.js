@@ -60,13 +60,12 @@ const Profile = () => {
     <div class="bg-white p-1 rounded-lg shadow-lg">
         <div class="flex items-center space-x-3 font-semibold text-gray-900 text-2xl leading-8 mb-4 underline">
         </div>
-        <InstrumentList />
-        {/* {data.user.instrument.map((instrument) => {
+        {/* {data.user.instrument} */}
+        {data.user.instruments.map((instrument) => {
               return (<div class="grid grid-cols-3 gap-1 mb-2">
-                  <div class="rounded-lg bg-yellow-500 text-center">{instrument}</div>
+                  <div class="rounded-lg bg-yellow-500 text-center">{instrument.name}</div>
               </div>)
-        })} */}
-
+        })}
     </div>
           </div>
           <div className="w-full md:w-9/12 mx-2 my-16 h-64 shadow-lg mb-2">

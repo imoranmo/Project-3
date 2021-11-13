@@ -1,8 +1,8 @@
 const User = require('./User');
-const Rhythms = require('./Rhythm');
+const Rhythm = require('./Rhythm');
 const Post = require('./Post');
-const Instruments = require('./Instrument');
+const Instrument = require('./Instrument');
 const Comment = require('./Comment');
 
 
-module.exports = { User, Rhythms, Post, Instruments, Comment };
+module.exports = { User, Rhythm, Post, Instrument, Comment };
