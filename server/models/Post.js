@@ -1,6 +1,7 @@
 const { Schema, model} = require('mongoose');
 const bcrypt = require('bcrypt');
 const Comment = require('./Comment');
+const dateFormat = require('../utils/dateFormat');
 
 const postSchema = new Schema({
 
@@ -22,10 +23,9 @@ const postSchema = new Schema({
       default: Date.now,
       get: (timestamp) => dateFormat(timestamp),
     },
-    rhythms: {
+    rhythm: {
       type: Schema.Types.ObjectId,
       ref: 'Rhythm',
-      required: true
     },
     user: {
       type: Schema.Types.ObjectId,

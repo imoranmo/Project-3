@@ -1,6 +1,7 @@
-const { Rhythm, Instrument, Post, User } = require('../models');
+
 const { AuthenticationError } = require('apollo-server-express');
 const { signToken } = require('../utils/auth');
+const { Rhythm, Instrument, Post, User } = require('../models');
 
 const resolvers = {
   Query: {
@@ -14,7 +15,7 @@ const resolvers = {
         return Post.findOne({ _id: postId});
       },
     posts:async () => {
-        return Post.find();
+        return Post.find().populate('user').populate('rhythm');
       },
     user: async (parent, { _id, userName }) => {
         return User.findOne(_id ? {_id}:{ userName }).populate('instruments');
