@@ -3,13 +3,13 @@
     "title": "Who wants to join my band, CatSkins",
     "content": "We are a cross between progressive jazz and hair metal. Looking for someone to play stand up bass.",
     "date_created": "September 18, 2021 08:30:00",
-    "user": ObjectId("61900582d6abad30b44698c5"),
+    "user": ObjectId("6190266e442156ed6b258bf8"),
     "rhythm":ObjectId("61901a701e12c013c8e0c449"),
     "url":"https://www.reddit.com/",
     "comments": [{
       "content": "Hell yeah brother, I would love to slap the bass in the CatSkins. Shoot me a text if you're interested at (555) 555-5555",
       "date_created": "September 18, 2021 08:40:00",
-      "userId": ObjectId("61900d76a32cf653f403c87d")
+      "userId": ObjectId("6190266e442156ed6b258bf8")
     }]
   }
 ]

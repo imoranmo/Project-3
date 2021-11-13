@@ -15,7 +15,11 @@ const resolvers = {
         return Post.findOne({ _id: postId});
       },
     posts:async () => {
-        return Post.find().populate('user').populate('rhythm');
+        return Post.find()
+          .populate('rhythm')
+          .populate({path:"comments", populate:{ path: 'user', model: 'User' }})
+          .populate({path:"user"})
+          ;
       },
     user: async (parent, { _id, userName }) => {
         return User.findOne(_id ? {_id}:{ userName }).populate('instruments');

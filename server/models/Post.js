@@ -1,6 +1,5 @@
 const { Schema, model} = require('mongoose');
 const bcrypt = require('bcrypt');
-const Comment = require('./Comment');
 const dateFormat = require('../utils/dateFormat');
 
 const postSchema = new Schema({
@@ -31,7 +30,10 @@ const postSchema = new Schema({
       type: Schema.Types.ObjectId,
       ref: 'User',
     },
-    comments: [Comment.schema]
+    comments: [{
+                  type: Schema.Types.ObjectId,
+                  ref: 'Comment',
+              }]
   })
 
   const Post = model('Post', postSchema)

@@ -42,19 +42,19 @@ export const QUERY_POSTS= gql`
       _id
       user {
         userName
-        instruments {
-          name
-        }
+        _id
+        instruments {_id}
       }
       dateCreated
       title
       content
-      rhythm {
-        name
-      }
+      rhythm {name}
       comments {
+        _id
         content
+        dateCreated
         user {
+          _id
           userName
         }
       }
