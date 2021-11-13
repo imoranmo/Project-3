@@ -38,19 +38,12 @@ const userSchema = new Schema ({
       type: String,
       default: "https://uwosh.edu/deanofstudents/wp-content/uploads/sites/156/2019/02/profile-default.jpg"
     },
-    instrumentId: [
+    instruments: [
       {
         type: Schema.Types.ObjectId,
         ref: 'Instrument',
       }
-    ],
-    postId: [
-      {
-        type: Schema.Types.ObjectId,
-        ref: 'Post',
-      }
     ]
-
   })
 
 

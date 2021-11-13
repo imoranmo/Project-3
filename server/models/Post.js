@@ -22,12 +22,12 @@ const postSchema = new Schema({
       default: Date.now,
       get: (timestamp) => dateFormat(timestamp),
     },
-    rhythmId: {
+    rhythms: {
       type: Schema.Types.ObjectId,
       ref: 'Rhythm',
       required: true
     },
-    userId: {
+    user: {
       type: Schema.Types.ObjectId,
       ref: 'User',
     },

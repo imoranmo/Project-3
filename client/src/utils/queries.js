@@ -11,7 +11,7 @@ export const QUERY_USER = gql`
       bio
       img
       rating
-      instrument {
+      instruments {
         name
       }
     }

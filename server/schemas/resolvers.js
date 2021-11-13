@@ -17,7 +17,7 @@ const resolvers = {
         return Post.find();
       },
     user: async (parent, { _id, userName }) => {
-        return User.findOne(_id ? {_id}:{ userName });
+        return User.findOne(_id ? {_id}:{ userName }).populate('instruments');
       },
     users:async () => {
         return User.find();

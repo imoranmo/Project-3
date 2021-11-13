@@ -2,6 +2,9 @@ import React from 'react';
 import { QUERY_POSTS } from '../utils/queries';
 
 const Feed = () => {
+    
+    
+    
     return (
 
 <div className="mt-6"> 
