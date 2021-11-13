@@ -3,8 +3,27 @@ import { QUERY_POSTS } from '../utils/queries';
 import { useQuery } from '@apollo/client';
 
 const Feed = () => {
+
     
     const { loading, data } = useQuery(QUERY_POSTS);
+
+    const commentToggleHandler = async (event) => {
+        // Stop the browser from submitting the form so we can do so with JavaScript
+            event.preventDefault();
+      
+            const commentBlock = event.target.nextElementSibling;
+            
+            const toggleBtn = event.target
+            
+            commentBlock.classList.toggle("hidden");
+            if (commentBlock.classList.contains("hidden")) {
+              toggleBtn.innerHTML = "Show Comments"
+            } else {
+              toggleBtn.innerHTML = "Hide Comments"
+            }
+        
+          };
+      
     
     return (
 
@@ -24,9 +43,15 @@ const Feed = () => {
                                 <div><a className="text-blue-700 underline" target="_blank" href="{{{post.url}}}">{post.url}</a></div>
                             </div>
                             <div className="flex items-center justify-between mt-4">
-                                <button id="toggle-comments" value="{{post.id}}" className="text-blue-500 hover:underline">Show Comments</button>
+                                <button id="toggle-comments" value="{{post.id}}" onClick={commentToggleHandler} className="text-blue-500 hover:underline">Show Comments</button>
                                 <div className="hidden" id="comments">
                                 <h1>Comments:</h1>
+                                    {post.comments.map((comment) => {
+                                        return (<div class="float-left max-w-4xl px-10 py-4 mx-auto mb-2 bg-gray-200 rounded-lg shadow-md">
+                                                    <h3 class="italic text-grey-200 text-sm">{comment.user.userName} on {comment.dateCreated}</h3>
+                                                    <p class=" float-left font-semibold">{comment.content}</p>
+                                                </div>)
+                                    })}
                                 </div>
                             </div>
                             <div className="mb-4 rounded-full">
