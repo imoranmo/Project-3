@@ -3,12 +3,12 @@ const { gql } = require('apollo-server-express');
 const typeDefs = gql`
   type Rhythm {
     _id: ID
-    rhythm: String
+    name: String
   }
 
   type Instrument {
     _id: ID
-    instrument: String
+    name: String
   }
 
   type Comment {
@@ -39,6 +39,7 @@ const typeDefs = gql`
     instrument: [Instrument]
     bio: String
     rating: Int
+    img: String
 
   }
 
@@ -54,8 +55,9 @@ const typeDefs = gql`
     instruments: [Instrument]
     post (postId: ID): Post
     posts: [Post]
-    user (userId: ID): User
+    user (userId: ID, userName: String): User
     users: [User]
+    me: User
   }
 
   type Mutation {

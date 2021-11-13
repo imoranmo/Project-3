@@ -59,11 +59,11 @@ const Login = (props) => {
           <form id='login-form' onSubmit={handleFormSubmit} className="mt-6 px-10">
             <div>
               <label className="block text-gray-700">Email Address</label>
-              <input onChange={handleChange} type="email" name="email" id="email-login" placeholder="Enter Email Address" className="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none " autofocus autocomplete required /> 
+              <input onChange={handleChange} type="email" name="email" id="email-login" placeholder="Enter Email Address" className="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none " autoFocus autoComplete='true' required /> 
             </div>
             <div className="mt-4">
               <label className="block text-gray-700">Password</label>
-              <input onChange={handleChange} type="password" name="password" id="password-login" placeholder="Enter Password" minlength="6" className="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500
+              <input onChange={handleChange} type="password" name="password" id="password-login" placeholder="Enter Password" minLength="6" className="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500
                     focus:bg-white focus:outline-none" required />
             </div>
             <div className="text-right mt-2">

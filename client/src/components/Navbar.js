@@ -1,5 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
+
 
 import Auth from '../utils/auth';
 
@@ -7,6 +8,7 @@ const Navbar = () => {
   const logout = (event) => {
     event.preventDefault();
     Auth.logout();
+    return <Redirect to="/login" />;
   };
   return (
     
@@ -17,7 +19,7 @@ const Navbar = () => {
                 <span className="logo flex float-left">A-LOTTA-RHYTHMS</span>
                 <div className="flex flex-row-reverse ..."></div>
                 <div><Link id="logout" to="/" onClick={logout} className="my-1 text-gray-800 hover:text-blue-500 md:mx-4 md:my-0 font-semibold text-lg underline">Logout</Link></div>
-                <div><Link to="/profile" className="my-1 text-gray-800 hover:text-blue-500 md:mx-4 md:my-0 font-semibold text-lg underline">Profile</Link></div>
+                <div><Link to={`/profile/${Auth.getProfile().data.userName}`} className="my-1 text-gray-800 hover:text-blue-500 md:mx-4 md:my-0 font-semibold text-lg underline">My Profile</Link></div>
                 <div><Link to="/" className="my-1 text-gray-800 hover:text-blue-500 md:mx-4 md:my-0 font-semibold text-lg underline">Feed</Link></div>
             </nav>
         </>
