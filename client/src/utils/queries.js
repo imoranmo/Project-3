@@ -12,7 +12,7 @@ export const QUERY_USER = gql`
       img
       rating
       instrument {
-        instrument
+        name
       }
     }
   }
@@ -32,7 +32,7 @@ export const QUERY_RHYTHMS = gql`
   query rhythms {
     rhythms{
       _id
-      rhythm
+      name
     }
   }
 `;
@@ -41,7 +41,7 @@ export const QUERY_INSTRUMENTS= gql`
   query instruments {
     instruments{
       _id
-      instrument
+      name
     }
   }
 `;
