@@ -11,8 +11,26 @@ const resolvers = {
     instruments: async () => {
       return Instrument.find();
     },
-    post:async (parent, {postId}) => {
-        return Post.findOne({ _id: postId});
+    post:async (parent, {postId}, context) => {
+        
+      if (!context.user){
+        throw new AuthenticationError('You need to be logged in!');
+      } else if (postId === "new") {
+        return {
+          "_id" :null,
+          "title" : null,
+          "content" : null,
+          "date_created" : null,
+          "user" : null,
+          "rhythm" : null,
+          "url" : null,
+          "comments" : []
+        }
+      }
+      return Post.findOne({ _id: postId})
+          .populate('rhythm')
+          .populate({path:"comments", populate:{ path: 'user', model: 'User' }})
+          .populate({path:"user"});
       },
     posts:async () => {
         return Post.find()
