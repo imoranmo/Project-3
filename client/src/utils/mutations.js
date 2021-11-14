@@ -23,3 +23,20 @@ export const ADD_USER = gql`
     }
   }
 `;
+
+export const UPDATE_POST = gql`
+  mutation updatePost($_id: ID, $content: String, $title: String, $rhythm: ID, $url: String ){
+    updatePost(_id: $_id, content: $content, title: $title, rhythm: $rhythm, url:$url){
+      _id
+      title
+    }
+  }
+`;
+export const ADD_POST = gql`
+  mutation addPost($content: String, $title: String, $rhythm: ID, $url: String){
+    addPost(content: $content, title: $title, rhythm: $rhythm, url:$url){
+      _id
+      title
+    }
+  }
+`;
