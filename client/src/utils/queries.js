@@ -48,7 +48,33 @@ export const QUERY_POSTS= gql`
       dateCreated
       title
       content
-      rhythm {name}
+      rhythm {_id,name}
+      comments {
+        _id
+        content
+        dateCreated
+        user {
+          _id
+          userName
+        }
+      }
+    }
+  }
+`;
+
+export const QUERY_POST= gql`
+  query post ($postId:ID){
+    post(postId:$postId){
+      _id
+      user {
+        userName
+        _id
+        instruments {_id}
+      }
+      dateCreated
+      title
+      content
+      rhythm {_id,name}
       comments {
         _id
         content

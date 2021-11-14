@@ -27,7 +27,7 @@ const Home = () => {
                 <div className="flex items-center justify-between">
                     <h1 className="text-xl font-bold text-gray-700 md:text-2xl ml-12 ">Posts</h1>
                     <div>
-                        <a href="/newPost/" className="mr-12 rounded-lg border-2 bg-black border-black text-white hover:bg-blue-600 hover:border-blue-600 p-2">CREATE NEW POST</a>
+                        <a href="/post/new" className="mr-12 rounded-lg border-2 bg-black border-black text-white hover:bg-blue-600 hover:border-blue-600 p-2">CREATE NEW POST</a>
                     </div>
                 </div>
                 <Feed />
@@ -37,29 +37,6 @@ const Home = () => {
     </div>
     
 </div>
-<div className="mt-8 ml-16">
-                    <div className="flex">
-                        <a href="#" className="px-3 py-2 mx-1 font-medium text-white bg-black rounded-md cursor-not-allowed">
-                            PREVIOUS
-                        </a>
-                    
-                        <a href="#" className="px-3 py-2 mx-1 font-medium text-white bg-black rounded-md hover:bg-blue-600 hover:text-white">
-                            1
-                        </a>
-                    
-                        <a href="#" className="px-3 py-2 mx-1 font-medium text-white bg-black rounded-md hover:bg-blue-600 hover:text-white">
-                            2
-                        </a>
-                    
-                        <a href="#" className="px-3 py-2 mx-1 font-medium text-white bg-black rounded-md hover:bg-blue-600 hover:text-white">
-                            3
-                        </a>
-                    
-                        <a href="#" className="px-3 py-2 mx-1 font-medium text-white bg-black rounded-md hover:bg-blue-600 hover:text-white">
-                            NEXT
-                        </a>
-                    </div>
-                </div>
 </>
           )}
 </main>
