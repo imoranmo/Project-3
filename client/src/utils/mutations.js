@@ -25,8 +25,8 @@ export const ADD_USER = gql`
 `;
 
 export const UPDATE_POST = gql`
-  mutation updatePost($_id: ID, $content: String, $title: String, $rhythm: ID, $url: String ){
-    updatePost(_id: $_id, content: $content, title: $title, rhythm: $rhythm, url:$url){
+  mutation updatePost($_id: ID, $content: String, $title: String, $rhythm: ID, $url: String, $user: ID ){
+    updatePost(_id: $_id, content: $content, title: $title, rhythm: $rhythm, url:$url, user: $user){
       _id
       title
     }

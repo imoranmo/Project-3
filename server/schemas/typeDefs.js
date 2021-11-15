@@ -25,6 +25,7 @@ const typeDefs = gql`
     title: String
     content: String
     rhythm: Rhythm
+    url: String
     comments: [Comment]
   }
 
@@ -53,7 +54,7 @@ const typeDefs = gql`
     rhythms: [Rhythm]
     instruments: [Instrument]
     post (postId: ID): Post
-    posts: [Post]
+    posts(user:ID): [Post]
     user (userId: ID, userName: String): User
     users: [User]
     me: User

@@ -32,8 +32,8 @@ const resolvers = {
           .populate({path:"comments", populate:{ path: 'user', model: 'User' }})
           .populate({path:"user"});
       },
-    posts:async () => {
-        return Post.find()
+    posts:async (parent, {user}) => {
+        return Post.find({user})
           .populate('rhythm')
           .populate({path:"comments", populate:{ path: 'user', model: 'User' }})
           .populate({path:"user"})
