@@ -20,21 +20,21 @@ const Home = () => {
             <div>Loading...</div>
           ) : (
 <>
-<div className="overflow-x-hidden bg-white">
-    <div className="px-6 py-8">
+
+    <div className="px-6 py-8 items-center w-screen">
         <div className="container flex justify-between mx-auto">
-            <div className="w-full lg:w-8/12">
-                <div className="flex items-center justify-between">
-                    <h1 className="text-xl font-bold text-gray-700 md:text-2xl ml-12 ">Posts</h1>
-                    <div>
-                        <a href="/post/new" className="mr-12 rounded-lg border-2 bg-black border-black text-white hover:bg-blue-600 hover:border-blue-600 p-2">CREATE NEW POST</a>
-                    </div>
+            <div className="w-full xl:w-2/3 bg-green-200 w-screen">
+                <div className="p-6 flex items-center justify-between ">
+                    <h1 className="mb-4 text-2xl font-bold text-gray-700">Posts</h1>
+                    
+                        <a href="/newPost/" className="rounded-lg border-2 bg-black border-black text-white hover:bg-blue-600 hover:border-blue-600 p-2 font-medium">CREATE NEW POST</a>
+                    
                 </div>
                 <Feed />
             </div>
             <RhythmFilter />
         </div>
-    </div>
+    
     
 </div>
 </>

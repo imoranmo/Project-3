@@ -8,12 +8,12 @@ const RhythmFilter = () => {
 
 
   return (
-    <div className="hidden w-4/12 -mx-8 lg:block">
+    <div className="hidden w-1/4 lg:block border-solid border-black flex justify-end bg-yellow-100 ">
                   {loading ? (
             <div>Loading...</div>
           ) : (
-    <div className="px-8">
-        <h1 className="mb-4 text-2xl font-bold text-gray-700 ml-6 ">Rhythms</h1>
+    <div className="p-6">
+        <h1 className="mb-4 text-2xl font-bold text-gray-700 ">Rhythms</h1>
         <div className="flex flex-col max-w-sm px-4 py-6 mx-auto bg-white rounded-lg shadow-md">
             <ul>                      
                 <li style={{listStyle:'none'}}>
