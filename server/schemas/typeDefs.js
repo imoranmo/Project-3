@@ -25,6 +25,7 @@ const typeDefs = gql`
     title: String
     content: String
     rhythm: Rhythm
+    url: String
     comments: [Comment]
   }
 
@@ -53,7 +54,7 @@ const typeDefs = gql`
     rhythms: [Rhythm]
     instruments: [Instrument]
     post (postId: ID): Post
-    posts: [Post]
+    posts(user:ID): [Post]
     user (userId: ID, userName: String): User
     users: [User]
     me: User
@@ -61,6 +62,8 @@ const typeDefs = gql`
 
   type Mutation {
     addUser(firstName: String, lastName: String, userName: String!, email: String!, password: String!) :Auth
+    addPost(title: String, content: String, url: String, rhythm: ID, user: ID ): Post
+    updatePost(title: String, content: String, url: String, rhythm: ID, user: ID, _id: ID): Post
     login (email: String!, password: String!): Auth
   }
 `;

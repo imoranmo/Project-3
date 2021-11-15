@@ -75,7 +75,7 @@ const Profile = () => {
                   </div>
                   <div className="text-gray-700">
               <div className="my-4"></div>
-              <Feed user={data.user.userName}/>          
+              <Feed user={data.user._id}/>          
               </div>
           </div>
       </div>

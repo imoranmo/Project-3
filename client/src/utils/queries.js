@@ -37,8 +37,8 @@ export const QUERY_INSTRUMENTS= gql`
 `;
 
 export const QUERY_POSTS= gql`
-  query posts {
-    posts{
+  query posts ($user: ID){
+    posts(user: $user){
       _id
       user {
         userName
@@ -48,7 +48,35 @@ export const QUERY_POSTS= gql`
       dateCreated
       title
       content
-      rhythm {name}
+      url
+      rhythm {_id,name}
+      comments {
+        _id
+        content
+        dateCreated
+        user {
+          _id
+          userName
+        }
+      }
+    }
+  }
+`;
+
+export const QUERY_POST= gql`
+  query post ($postId:ID){
+    post(postId:$postId){
+      _id
+      user {
+        userName
+        _id
+        instruments {_id}
+      }
+      dateCreated
+      title
+      content
+      url
+      rhythm {_id,name}
       comments {
         _id
         content

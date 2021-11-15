@@ -11,11 +11,29 @@ const resolvers = {
     instruments: async () => {
       return Instrument.find();
     },
-    post:async (parent, {postId}) => {
-        return Post.findOne({ _id: postId});
+    post:async (parent, {postId}, context) => {
+        
+      if (!context.user){
+        throw new AuthenticationError('You need to be logged in!');
+      } else if (postId === "new") {
+        return {
+          "_id" :null,
+          "title" : null,
+          "content" : null,
+          "date_created" : null,
+          "user" : null,
+          "rhythm" : null,
+          "url" : null,
+          "comments" : []
+        }
+      }
+      return Post.findOne({ _id: postId})
+          .populate('rhythm')
+          .populate({path:"comments", populate:{ path: 'user', model: 'User' }})
+          .populate({path:"user"});
       },
-    posts:async () => {
-        return Post.find()
+    posts:async (parent, {user}) => {
+        return Post.find({user})
           .populate('rhythm')
           .populate({path:"comments", populate:{ path: 'user', model: 'User' }})
           .populate({path:"user"})
@@ -58,6 +76,25 @@ const resolvers = {
   
         return { token, user };
       },
+      addPost: async(parent, args, context) => {
+        const user = context.user._id;
+        if (!user){
+          throw new AuthenticationError('You must ben signed in');
+        }
+
+        const post = await Post.create({...args, user});
+        return post;
+      },
+      updatePost: async(parent, {postId, content, url, rhythm, title, user }, context) => {
+        const loggedUserId = context.user._id;
+        if (!loggedUserId){
+          throw new AuthenticationError('You must ben signed in');
+        } else if (loggedUserId != user) {
+          throw new AuthenticationError(`You can't edit this post`);
+        }
+        const post = await Post.findOneAndUpdate({_id: postId}, {content, url, rhythm, title});
+        return post;
+      }
     },
   };
   
