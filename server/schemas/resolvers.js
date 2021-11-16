@@ -33,7 +33,7 @@ const resolvers = {
           .populate({path:"user"});
       },
     posts:async (parent, {user}) => {
-        return Post.find({user})
+        return Post.find(user ? {user} : {})
           .populate('rhythm')
           .populate({path:"comments", populate:{ path: 'user', model: 'User' }})
           .populate({path:"user"})

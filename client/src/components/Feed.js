@@ -7,7 +7,7 @@ import Auth from '../utils/auth';
 const Feed = (props) => {
 
     const {user} = props
-    const { loading, data } = useQuery(QUERY_POSTS, {variables: {user}});
+    const { loading, data } = useQuery(QUERY_POSTS, {variables: {user: user}});
 
     
     
@@ -64,7 +64,7 @@ const Feed = (props) => {
                                 </div>
                             </div>
                             <div className="mb-4 rounded-full">
-                                <input type="text" name="" data-value="{{post.id}}" id="comment" placeholder="Add a comment!" className="mt-4 w-full px-4 py-3 rounded-full bg-gray-200 mt-2 border focus:border-black focus:bg-white focus:outline-none " autoFocus autoComplete='true' required />
+                                <input type="text" name="" data-value="{{post.id}}" id="comment" placeholder="Add a comment!" className="mt-4 w-full px-4 py-3 rounded-full bg-gray-200 mt-2 border focus:border-black focus:bg-white focus:outline-none " autoComplete='true' required />
                             </div>
                         </div></>)
             })}

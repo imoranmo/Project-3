@@ -56,24 +56,24 @@ const Signup = () => {
             <form onSubmit={handleFormSubmit} className="mt-6">
               <span className="w-1/2">
                 <label for="userName" className="block text-xs font-semibold text-gray-600 uppercase">User Name</label>
-                <input onChange={handleChange} type="text" name="userName" placeholder="JOHNDOE" autocomplete="family-name" className="rounded-lg block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner" required />
+                <input onChange={handleChange} type="text" name="userName" placeholder="JOHNDOE" autoComplete="family-name" className="rounded-lg block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner" required />
               </span>
                 <div className="flex justify-between gap-3">
                     <span className="w-1/2">
                       <label for="firstName" className="block text-xs font-semibold text-gray-600 uppercase">First Name</label>
-                      <input onChange={handleChange} type="text" name="firstName" placeholder="John" autocomplete="given-name" className="rounded-lg block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner" required />
+                      <input onChange={handleChange} type="text" name="firstName" placeholder="John" autoComplete="given-name" className="rounded-lg block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner" required />
                     </span>
                     <span className="w-1/2">
                       <label for="lastName" className="block text-xs font-semibold text-gray-600 uppercase">Last Name</label>
-                      <input onChange={handleChange} type="text" name="lastName" placeholder="Doe" autocomplete="family-name" className="rounded-lg block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner" required />
+                      <input onChange={handleChange} type="text" name="lastName" placeholder="Doe" autoComplete="family-name" className="rounded-lg block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner" required />
                     </span>
                   </div>
                   <label for="email" className="block mt-2 text-xs font-semibold text-gray-600 uppercase">E-mail</label>
-                  <input onChange={handleChange} type="email" name="email" placeholder="john.doe@emaildomain.com" autocomplete="email" className="rounded-lg block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner" required />
+                  <input onChange={handleChange} type="email" name="email" placeholder="john.doe@emaildomain.com" autoComplete="email" className="rounded-lg block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner" required />
                   <label for="password" className="block mt-2 text-xs font-semibold text-gray-600 uppercase">Password</label>
-                  <input onChange={handleChange} type="password" name="password" placeholder="********" autocomplete="new-password" className="rounded-lg block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner" required />
+                  <input onChange={handleChange} type="password" name="password" placeholder="********" autoComplete="new-password" className="rounded-lg block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner" required />
                   <label for="password-confirm" className="block mt-2 text-xs font-semibold text-gray-600 uppercase">Confirm Password</label>
-                  <input onChange={handleChange} type="password" name="password-confirm" placeholder="********" autocomplete="new-password" className="rounded-lg block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner" required />
+                  <input onChange={handleChange} type="password" name="password-confirm" placeholder="********" autoComplete="new-password" className="rounded-lg block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner" required />
                   <button type="submit" className="rounded-lg w-full py-3 mt-6 font-medium tracking-widest text-white uppercase bg-black shadow-lg focus:outline-none hover:bg-yellow-400 hover:shadow-none">Sign up</button>
                   <p className="mt-4 text-xs text-gray-500">Already registered? <a href="/login" className="text-blue-500 hover:text-blue-700 font-semibold underline">Log in.</a></p>
                 </form>
