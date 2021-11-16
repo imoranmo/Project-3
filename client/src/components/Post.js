@@ -9,6 +9,8 @@ import Auth from '../utils/auth';
 
 const Post = () => {
 
+
+
     const { postId } = useParams();
 
     const {loading: rhythmLoad, data: rhythmData} = useQuery(QUERY_RHYTHMS);
@@ -31,7 +33,10 @@ const Post = () => {
     const [addPost, { error: addError, data: addData }] = useMutation(ADD_POST);
     const [updatePost, { error: updateError, data: updateData }] = useMutation(UPDATE_POST);
     
-    
+    if (!Auth.loggedIn()) {
+        return <Redirect to="/login" />;
+      }
+      
 
     const handleChange = (event) => {
         const { name, value } = event.target;
