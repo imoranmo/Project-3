@@ -24,6 +24,19 @@ export const ADD_USER = gql`
   }
 `;
 
+
+export const UPDATE_USER = gql`
+  mutation updateUser($firstName: String, $lastName: String, $userName: String, $email: String, $instruments: String, $bio: String, $rating: Number) {
+    updateUser(firstName: $firstName, lastName: $lastName, userName: $userName, email: $email, instruments: $instruments, bio: $bio, rating: $rating) {
+      token
+      user {
+        _id
+        userName
+      }
+    }
+  }
+`;
+
 export const UPDATE_POST = gql`
   mutation updatePost($_id: ID, $content: String, $title: String, $rhythm: ID, $url: String, $user: ID ){
     updatePost(_id: $_id, content: $content, title: $title, rhythm: $rhythm, url:$url, user: $user){

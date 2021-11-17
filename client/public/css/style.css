@@ -49,3 +49,12 @@ body{
     width: 800px;
   }
 }
+
+.multiSelect {
+  color:black
+}
+
+.dropdown-content{
+  color: black
+  
+}
