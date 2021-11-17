@@ -18,6 +18,7 @@
   },
   "dependencies": {
     "graphql": "^15.5.1",
+    "react-multi-select-component": "^4.1.14",
     "seedgoose": "^2.0.2"
   }
 }

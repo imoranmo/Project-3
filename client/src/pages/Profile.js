@@ -44,14 +44,14 @@ const Profile = () => {
               </div>
               <div className="bg-white p-3 border-t-4 border-yellow-500 rounded-lg shadow-lg">
                   <div className="image overflow-hidden">
-                  {canEdit && (<a href="#" title="Click to change profile picture">Edit Picture</a>)}
+                  {canEdit && (<a href="/profileEdit" title="Click to change profile picture">Edit Profile</a>)}
                       <img className="h-auto w-full mx-auto rounded-full"
                           src={data.user.img}
                           alt="profilepic"/>
                   </div>
                   <h1 className="text-gray-900 font-bold text-xl leading-8 my-1">{`${data.user.firstName} ${data.user.lastName}`}</h1>
                   <h3 className="text-blue-600 font-lg text-semibold leading-6 mb-2">Username: <span className="text-black">{data.user.userName}</span></h3>
-                  <p className="text-lg text-grey-500 leading-6 font-semibold">About me: {canEdit && (<a href="/editPost" className="text-sm text-blue-500 underline">edit</a>)} </p><span className="font-small text-base">{data.user.bio}</span>
+                  <p className="text-lg text-grey-500 leading-6 font-semibold">About me: </p><span className="font-small text-base">{data.user.bio}</span>
               </div>
               <div className="my-4 "></div>
               <div class="flex items-center space-x-3 font-bold text-gray-700 text-2xl leading-8 mb-4">

@@ -26,16 +26,12 @@ const Home = () => {
             <div className="w-full xl:w-2/3 bg-green-200 w-screen">
                 <div className="p-6 flex items-center justify-between ">
                     <h1 className="mb-4 text-2xl font-bold text-gray-700">Posts</h1>
-                    
-                        <a href="/newPost/" className="rounded-lg border-2 bg-black border-black text-white hover:bg-blue-600 hover:border-blue-600 p-2 font-medium">CREATE NEW POST</a>
-                    
+                        <a href="/Post/new" className="rounded-lg border-2 bg-black border-black text-white hover:bg-blue-600 hover:border-blue-600 p-2 font-medium">CREATE NEW POST</a>
                 </div>
                 <Feed />
             </div>
             <RhythmFilter />
         </div>
-    
-    
 </div>
 </>
           )}
