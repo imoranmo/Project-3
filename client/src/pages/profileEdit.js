@@ -4,7 +4,7 @@ import { QUERY_RHYTHMS, QUERY_POST} from '../utils/queries';
 import { useQuery, useMutation } from '@apollo/client';
 import { UPDATE_POST, ADD_POST } from '../utils/mutations';
 import { useParams } from 'react-router-dom';
-import InstrumentList from
+import InstrumentList from '../components/InstrumentList'
 
 import Auth from '../utils/auth';
 
