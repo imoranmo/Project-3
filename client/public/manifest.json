@@ -26,7 +26,18 @@
       "src": "rss-feed-symbol.png",
       "type": "image/png",
       "sizes": "512x512"
+    },
+    {
+      "src": "magnifying-glass.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    },
+    {
+      "src": "filter-filled-tool-symbol.png",
+      "type": "image/png",
+      "sizes": "512x512"
     }
+    
     
   ],
   "start_url": ".",

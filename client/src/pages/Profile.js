@@ -6,6 +6,7 @@ import { QUERY_USER, QUERY_ME } from '../utils/queries';
 import InstrumentList from '../components/InstrumentList';
 import Feed from '../components/Feed';
 
+
 import Auth from '../utils/auth';
 
 const Profile = () => {
