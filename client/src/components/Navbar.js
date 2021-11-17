@@ -24,6 +24,11 @@ const Navbar = () => {
         </a>
         
         <div className="hidden md:flex px-2 mx-auto font-semibold font-heading space-x-16 xl:px-10">
+          <select id='rhythm' name="rhythm" className="w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" defaultValue={rhythmId} >
+                      <option key="1" value="1">Instrument</option>
+                      <option key="2" value="2">User</option>
+                      <option key="3" value="3">Rhythm</option>
+          </select>
           <input type="text" name="" data-value="{{post.id}}" id="comment" placeholder="Search..." className="searchbar text-black px-4 h-10 rounded-full bg-gray-200 mt-2 border focus:border-black focus:bg-white focus:outline-none " autoFocus autoComplete="true" required />
         </div>
         
