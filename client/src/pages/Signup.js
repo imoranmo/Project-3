@@ -5,6 +5,7 @@ import { useMutation } from '@apollo/client';
 import { ADD_USER } from '../utils/mutations';
 
 import Auth from '../utils/auth';
+import Socialsignup from '../components/Socialsignup';
 
 const Signup = () => {
   const [formState, setFormState] = useState({
@@ -43,6 +44,7 @@ const Signup = () => {
   };
 
   return (
+    <div>
       <div class="grid min-h-screen place-items-center">
         <div class="w-11/12 p-12 bg-white sm:w-8/12 md:w-1/2 lg:w-5/12  border-2 shadow-lg border-gray rounded-lg">
           <h1 class="text-3xl font-semibold text-center">Let's make music! ♪</h1>
@@ -84,8 +86,10 @@ const Signup = () => {
                 {error.message}
               </div>
             )}
+             <Socialsignup/>
         </div>
       </div>
+    </div> 
   );
 };
 
