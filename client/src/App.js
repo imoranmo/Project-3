@@ -44,9 +44,9 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <Router>
-        <div className="flex-column justify-flex-start min-100-vh">
+        
           <Navbar />
-          <div className="container">
+         
             <Route exact path="/">
               <Home />
             </Route>
@@ -65,8 +65,8 @@ function App() {
             <Route exact path="/post/:postId">
               <Post/>
             </Route>
-          </div>
-        </div>
+         
+       
       </Router>
     </ApolloProvider>
   );

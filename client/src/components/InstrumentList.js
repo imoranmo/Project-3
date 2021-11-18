@@ -27,7 +27,7 @@ const InstrumentList = ({preSel}) => {
     }})
 
   return ( 
-
+<div className="w-1/3">
 <MultiSelect 
         options={instruments}
         name="instruments"
@@ -35,7 +35,7 @@ const InstrumentList = ({preSel}) => {
         onChange={setSelected}
         labelledBy="Select"
 />
-
+</div>
 
 )
   };

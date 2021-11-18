@@ -21,19 +21,21 @@ const Feed = (props) => {
     
     return (
 
-<div className="mt-6"> 
+<div className="max-w-4xl px-10 mx-auto mb-4"> 
     {loading ? (
             <div>Loading...</div>
           ) : (
         <>
-            <div className="hidden md:flex px-2 mx-auto font-semibold font-heading space-x-16 xl:px-10">
-                <InstrumentList/>
-                <RhythmList/>
-                <button id="search" onClick={handleFilter} className="w-1/6 h-1/6"><img alt="filter" src="filter-filled-tool-symbol.png" title="filter" className="w-8 h-8"></img></button>
+               <div className="flex space-x-2 my-4">
+               
+               <InstrumentList/>
+               <RhythmList/>
+                
+                <button id="search" onClick={handleFilter}><img alt="filter" src="filter-filled-tool-symbol.png" title="filter" className="w-5 h-5 flex items-center ml-2"></img></button>
             </div>
             {data.posts.map((post) => {
         
-                return (<><div  className="max-w-4xl px-10 py-6 mx-auto bg-white rounded-lg shadow-md">
+                return (<><div  className="max-w-4xl px-10 py-6 mx-auto bg-white rounded-lg shadow-md mb-4">
 
                             <div className="flex items-center justify-between"><span className="font-light text-gray-600">{post.dateCreated} by: {post.user.userName}</span>
                             {post.user._id === Auth.getProfile().data._id ? (<a href={`/Post/${post._id}`} className="text-sm text-blue-500 underline">edit</a>) : ""}

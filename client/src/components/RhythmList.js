@@ -27,7 +27,7 @@ const RhythmList = ({preSel}) => {
     }})
 
   return ( 
-
+<div className="w-1/3">
 <MultiSelect 
         options={rhythms}
         name="rhythms"
@@ -35,7 +35,7 @@ const RhythmList = ({preSel}) => {
         onChange={setSelected}
         labelledBy="Select"
 />
-
+</div>
 
 )
   };

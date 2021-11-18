@@ -60,10 +60,10 @@ return <div>Loading...</div>;
 }
 
 return (
-    <div className="py-12">
-    <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
+    <div className="py-24">
+    <div className="max-w-5xl mx-auto sm:px-6 lg:px-8 h-full">
         <div className="bg-white overflow-hidden shadow-lg sm:rounded-lg">
-            <div className="p-6 bg-white border-b border-gray-200">
+            <div className="p-6 bg-white border-2 border-gray-200">
                 <h1 className="np-title mb-8 text-3xl font-bold">Edit Profile</h1>
                 <form id='newPost-form' onSubmit={handleFormSubmit}>
                     <div className="mb-4">
@@ -77,7 +77,7 @@ return (
                     </div>
                     <div>
                         <label className="text-xl text-gray-600">First Name</label>
-                        <input className="rounded-lg border-2 border-gray-300 p-2 w-full"
+                        <input className="bg-gray-200 mb-4 rounded-lg border-2 border-gray-300 p-2 w-full"
                             type="text"
                             placeholder="First Name"
                             name="firstName"
@@ -87,7 +87,7 @@ return (
                     </div>
                     <div>
                         <label className="text-xl text-gray-600">Last Name</label>
-                        <input className="rounded-lg border-2 border-gray-300 p-2 w-full"
+                        <input className="bg-gray-200 mb-4 rounded-lg border-2 border-gray-300 p-2 w-full"
                             type="text"
                             placeholder="Last Name"
                             name="lastName"
@@ -97,7 +97,7 @@ return (
                     </div>
                     <div>
                         <label className="text-xl text-gray-600">User Name</label>
-                        <input className="rounded-lg border-2 border-gray-300 p-2 w-full"
+                        <input className="bg-gray-200 mb-4 rounded-lg border-2 border-gray-300 p-2 w-full"
                             type="text"
                             placeholder="User Name"
                             name="userName"
@@ -107,7 +107,7 @@ return (
                     </div>
                     <div>
                         <label className="text-xl text-gray-600">Email</label>
-                        <input className="rounded-lg border-2 border-gray-300 p-2 w-full"
+                        <input className="bg-gray-200 mb-4 rounded-lg border-2 border-gray-300 p-2 w-full"
                             type="email"
                             placeholder="Email"
                             name="email"
@@ -121,7 +121,7 @@ return (
                     </div>
                     <div>
                         <label className="text-xl text-gray-600">About Me</label>
-                        <input className="rounded-lg border-2 border-gray-300 p-2 w-full"
+                        <textarea className="mb-24 rounded-lg border-2 border-gray-300 p-2 w-full h-48"
                             type="text"
                             placeholder="About Me"
                             name="bio"

@@ -90,10 +90,10 @@ let rhythmId = null
 
 
 return (
-<div className="py-12">
-    <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
-        <div className="bg-white overflow-hidden shadow-lg sm:rounded-lg">
-            <div className="p-6 bg-white border-b border-gray-200">
+<div className="py-24">
+    <div className="max-w-5xl mx-auto sm:px-6 lg:px-8 ">
+        <div className="bg-white border-2 overflow-hidden shadow-lg sm:rounded-lg">
+            <div className="p-6 bg-white">
                 <h1 className="np-title mb-8 text-3xl font-bold">{canEdit ? "EDIT POST" : "NEW POST"}</h1>
                 <form id='newPost-form' onSubmit={handleFormSubmit}>
                     <div className="mb-4">
@@ -102,7 +102,7 @@ return (
                     </div>
                     <div>
                         <label className="text-xl text-gray-600">Rhythm</label>
-                        <select id='rhythm' name="rhythm" onLoad={handleChange} onChange={handleChange} className="w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" defaultValue={rhythmId} >
+                        <select id='rhythm' name="rhythm" onLoad={handleChange} onChange={handleChange} className="w-full py-4 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" defaultValue={rhythmId} >
                 
                                     {(rhythmData.rhythms.map((rhythm, index)=> {
                                         return (<option key={index} value={rhythm._id}>{rhythm.name}</option>)
@@ -111,9 +111,12 @@ return (
                     </div>
                     <div className="mb-4">
                         <label className="text-xl text-gray-600">Content<span className="text-red-500">*</span></label>
-                        <textarea id='content' defaultValue={postData ? postData.post.content : ""} onLoad={handleChange} onChange={handleChange} name="content" className="rounded-lg border-2 border-gray-500">
+                        <div>
+                        
+                        <textarea defaultValue={postData ? postData.post.content : ""} onLoad={handleChange} onChange={handleChange}  id='content' name="content" className="rounded-lg border-2 border-gray-500">
                                 
                         </textarea>
+                        </div>
                     </div>
                     <div className="mb-8">
                         <label className="text-xl text-gray-600">URL</label>
