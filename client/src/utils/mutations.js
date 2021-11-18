@@ -37,14 +37,6 @@ export const UPDATE_USER = gql`
   }
 `;
 
-export const UPDATE_POST = gql`
-  mutation updatePost($_id: ID, $content: String, $title: String, $rhythm: ID, $url: String, $user: ID ){
-    updatePost(_id: $_id, content: $content, title: $title, rhythm: $rhythm, url:$url, user: $user){
-      _id
-      title
-    }
-  }
-`;
 export const ADD_POST = gql`
   mutation addPost($content: String, $title: String, $rhythm: ID, $url: String){
     addPost(content: $content, title: $title, rhythm: $rhythm, url:$url){
@@ -53,3 +45,49 @@ export const ADD_POST = gql`
     }
   }
 `;
+
+export const ADD_COMMENT = gql`
+  mutation addComment($content: String, $postId: ID) {
+    addComment(content:$content, postId:$postId ){
+      _id
+      content
+      dateCreated
+      user {
+          _id
+          userName
+        }
+    }
+  }`
+
+export const UPDATE_POST = gql`
+mutation updatePost($_id: ID, $content: String, $title: String, $rhythm: ID, $url: String, $user: ID ){
+  updatePost(_id: $_id, content: $content, title: $title, rhythm: $rhythm, url:$url, user: $user){
+    _id
+    title
+  }
+}
+`;
+
+export const UPDATE_COMMENT = gql`
+  mutation updateComment($_id:ID, $content: String, $postId:ID) {
+    updateComment(_id:$_id, content:$content, postId:$postId){
+      _id
+    }
+  }`
+
+  
+export const DELETE_POST = gql`
+mutation deletePost($_id: ID) {
+  deletePost(_id:$_id){
+    _id
+    title
+  }
+}`
+
+
+export const DELETE_COMMENT = gql`
+  mutation deleteComment($_id: ID, , $postId: ID) {
+    deleteComment(_id:$_id, postId:$postId){
+      _id
+    }
+  }`
