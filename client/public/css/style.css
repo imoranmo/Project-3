@@ -2,18 +2,14 @@ body{
   font-family: 'Didact Gothic', sans-serif;
 }
 .web-title {
-  font-family: 'Luckiest Guy', cursive;;
-    -webkit-text-stroke: 1px black;
-    color: #F59E0B;
+  font-family: 'Monoton', sans-serif;
     font-size: 65px;
-    color:#fff;
-    text-shadow:
-	    -3px -3px 3px #F59E0B,
-	    3px -3px 3px #F59E0B,
-	    -3px 3px 3px #F59E0B,
-	    -3px 3px 3px #F59E0B;
+    color:black;
 }
 
+.bg-color {
+  background-color: #E4850F;
+}
 .logo {
   font-family: 'Luckiest Guy', cursive;;
     -webkit-text-stroke: 1px black;
@@ -49,12 +45,12 @@ body{
     width: 800px;
   }
 }
-
-.multiSelect {
-  color:black
+.bg-image {
+  background-image: url(../images/guitar.jpeg);
 }
+
 
 .dropdown-content{
   color: black
-  
+
 }

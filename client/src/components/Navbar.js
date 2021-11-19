@@ -23,6 +23,7 @@ const Navbar = () => {
         <img alt="logo" width="150px" src="LOGO.png"></img>
         </a>
         <div className="hidden md:flex px-2 mx-auto font-semibold font-heading space-x-16 xl:px-10">
+
             <input type="text" name="" data-value="{{post.id}}" id="comment" placeholder="Search..." className="searchbar text-black px-4 h-10 rounded-full bg-gray-200 mt-2 border focus:border-black focus:bg-white focus:outline-none " autoFocus autoComplete="true" required />
         </div>
 
