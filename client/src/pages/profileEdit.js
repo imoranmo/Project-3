@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import { Redirect, Link } from 'react-router-dom';
 import { useQuery, useMutation } from '@apollo/client';
 import { UPDATE_USER } from '../utils/mutations';
@@ -13,19 +13,30 @@ const userName = Auth.getProfile().data.userName
 
 const { loading, data} = useQuery(QUERY_USER, {variables: { userName } });
 const [updateUser, { error, data: updateData }] = useMutation(UPDATE_USER);
+const [instruments, setInstruments] = useState(JSON.parse(window.localStorage.getItem('instrumentFilters')) || [])
+
+const instrumentSelectHandle = (event) => {
+    setInstruments(event)
+}
+
+useEffect(()=> {
+    const selectedInstruments = instruments.map((instrument) => instrument.value)
+    setFormState((formState) => {return {...formState, selectedInstruments}})
+ },[instruments])
+
 const [formState, setFormState] = useState({
+        firstName: "",
+        lastName:"",
         userName: "",
-        instruments: [],
+        email:"",
         img: "",
         bio: ""
       });
+
 if (!Auth.loggedIn()){
     return <Redirect to="/login" />;
 }
 
-if (!Auth.loggedIn()) {
-    return <Redirect to="/login" />;
-  }
   
 
 const handleChange = (event) => {
@@ -34,6 +45,7 @@ const handleChange = (event) => {
         ...formState,
         [name]: value,
     });
+    console.log(formState)
 };
 
 const handlePhoto = () => {
@@ -48,7 +60,7 @@ const handleFormSubmit = async (event) => {
         await updateUser({
             variables: { ...formState},
             });
-            return <Redirect to="/profile/me" />;
+            return window.location = "/profile/me";
     } catch (e) {
         console.error(e);
     }
@@ -77,47 +89,47 @@ return (
                     </div>
                     <div>
                         <label className="text-xl text-gray-600">First Name</label>
-                        <input className="bg-gray-200 mb-4 rounded-lg border-2 border-gray-300 p-2 w-full"
+                        <input className="mb-4 rounded-lg border-2 border-gray-300 p-2 w-full"
                             type="text"
                             placeholder="First Name"
                             name="firstName"
-                            value={data.user.firstName}
+                            deaultValue={data.user.firstName}
                             onChange={handleChange}
                         />
                     </div>
                     <div>
                         <label className="text-xl text-gray-600">Last Name</label>
-                        <input className="bg-gray-200 mb-4 rounded-lg border-2 border-gray-300 p-2 w-full"
+                        <input className="mb-4 rounded-lg border-2 border-gray-300 p-2 w-full"
                             type="text"
                             placeholder="Last Name"
                             name="lastName"
-                            value={data.user.lastName}
+                            defaultValue={data.user.lastName}
                             onChange={handleChange}
                         />
                     </div>
                     <div>
                         <label className="text-xl text-gray-600">User Name</label>
-                        <input className="bg-gray-200 mb-4 rounded-lg border-2 border-gray-300 p-2 w-full"
+                        <input className="mb-4 rounded-lg border-2 border-gray-300 p-2 w-full"
                             type="text"
                             placeholder="User Name"
                             name="userName"
-                            value={data.user.userName}
+                            defaultValue={data.user.userName}
                             onChange={handleChange}
                         />
                     </div>
                     <div>
                         <label className="text-xl text-gray-600">Email</label>
-                        <input className="bg-gray-200 mb-4 rounded-lg border-2 border-gray-300 p-2 w-full"
+                        <input className="mb-4 rounded-lg border-2 border-gray-300 p-2 w-full"
                             type="email"
                             placeholder="Email"
                             name="email"
-                            value={data.user.email}
+                            defaultValue={data.user.email}
                             onChange={handleChange}
                         />
                     </div>
                     <div className="mb-4">
                         <label className="text-xl text-gray-600">Instruments</label>
-                        <InstrumentList className="rounded-lg border-2 border-gray-300 p-2 w-full"  preSel={data.user.instruments}/>
+                        <InstrumentList filterList={instruments} filterHandle={instrumentSelectHandle} className="rounded-lg border-2 border-gray-300 p-2 w-full" />
                     </div>
                     <div>
                         <label className="text-xl text-gray-600">About Me</label>
@@ -125,7 +137,7 @@ return (
                             type="text"
                             placeholder="About Me"
                             name="bio"
-                            value={data.user.bio}
+                            defaultValue={data.user.bio}
                             onChange={handleChange}
                         />
                     </div>
