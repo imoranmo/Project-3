@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import { QUERY_POSTS } from '../utils/queries';
 import { useQuery } from '@apollo/client';
 import InstrumentList from './InstrumentList'
@@ -10,28 +10,69 @@ import Auth from '../utils/auth';
 const Feed = (props) => {
 
     const {user} = props
-    const { loading, data } = useQuery(QUERY_POSTS, {variables: {user: user}});
+ 
+    const [rhythms, setRhythms] = useState(window.localStorage.getItem('rhythmFilters') || [])
+    const [instruments, setInstruments] = useState(JSON.parse(window.localStorage.getItem('instrumentFilters')) || [])
+    const [posts, setPosts] = useState([])
+    const [filteredPosts, setfilteredPosts] = useState([])
 
-    
-    const handleFilter = () => {
-        return console.log("Clicked")
-      }
-    
-      
-    
+    const instrumentFilterHandle = (event) => {
+        setInstruments(event)
+    }
+    const rhythmFilterHandle = (event) => {
+        setRhythms(event)
+    }
+
+    const { loading, data } = useQuery(QUERY_POSTS, {variables: {user}});
+
+    useEffect(()=> {
+       setPosts(data?.posts)
+       setfilteredPosts(data?.posts)
+    },[data])
+
+
+    useEffect(()=>{
+        console.log(instruments)
+        console.log(rhythms)
+
+        const newPosts = posts.filter((post) => {
+            let inst = false
+            for ( let i=0; i < rhythms.length; i++){
+                console.log(rhythms[i].value)
+                if (rhythms[i].value === post.rhythm._id){
+                    inst =  true;
+                }
+            }
+            let rhyth = false
+            for ( let j=0; j < instruments.length; j++){
+                for (let k=0; k < post.user.instruments.length; k++){
+                
+                if (instruments[j].value === post.user.instruments[k]._id){
+                    rhyth = true;
+                }
+            }
+        }
+            return inst && rhyth
+        })
+
+        console.log(newPosts)
+        setfilteredPosts(newPosts)
+    },[instruments, rhythms])
+
+    if (loading) {
+        return <div>Loading...</div>
+    }
+
+
     return (
 
 <div className="mt-6"> 
-    {loading ? (
-            <div>Loading...</div>
-          ) : (
         <>
             <div className="hidden md:flex px-2 mx-auto font-semibold font-heading space-x-16 xl:px-10">
-                <InstrumentList/>
-                <RhythmList/>
-                <button id="search" onClick={handleFilter} className="w-1/6 h-1/6"><img alt="filter" src="filter-filled-tool-symbol.png" title="filter" className="w-8 h-8"></img></button>
+                <RhythmList filterList={rhythms} filterHandle={rhythmFilterHandle}/>
+                <InstrumentList filterList={instruments} filterHandle={instrumentFilterHandle}/>
             </div>
-            {data.posts.map((post) => {
+            {filteredPosts.map((post) => {
         
                 return (<><div  className="max-w-4xl px-10 py-6 mx-auto bg-white rounded-lg shadow-md">
 
@@ -47,7 +88,7 @@ const Feed = (props) => {
                         </div></>)
             })}
         </>
-    )}
+    
      
 </div>
 )};
