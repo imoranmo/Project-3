@@ -19,7 +19,7 @@ const RhythmList = ({filterList, filterHandle}) => {
     }})
 
   return ( 
-
+<div className="w-1/3">
 <MultiSelect 
         options={allRhythms}
         name="rhythms"
@@ -27,7 +27,7 @@ const RhythmList = ({filterList, filterHandle}) => {
         onChange={filterHandle}
         labelledBy="Select"
 />
-
+</div>
 
 )
   };

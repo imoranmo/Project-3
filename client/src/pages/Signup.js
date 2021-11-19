@@ -44,8 +44,13 @@ const Signup = () => {
   };
 
   return (
-    <div>
-      <div class="grid min-h-screen place-items-center">
+    
+    
+      
+      <div class="flex justify-center min-h-screen place-items-center my-4 space-x-32 w-screen bg-gray-100">
+
+      
+             
         <div class="w-11/12 p-12 bg-white sm:w-8/12 md:w-1/2 lg:w-5/12  border-2 shadow-lg border-gray rounded-lg">
           <h1 class="text-3xl font-semibold text-center">Let's make music! ♪</h1>
           <h2 class="text-center">To create an account, please fill out the information below...</h2>
@@ -86,10 +91,14 @@ const Signup = () => {
                 {error.message}
               </div>
             )}
-             <Socialsignup/>
+            
         </div>
+
+        <div classname="flex justify-center">
+             <Socialsignup/>
+             </div>
       </div>
-    </div> 
+    
   );
 };
 

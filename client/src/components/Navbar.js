@@ -17,10 +17,10 @@ const Navbar = () => {
     {Auth.loggedIn() ? (
         <>
 
-    <nav className="flex justify-center bg-yellow-500 text-white w-screen">
-      <div className="px-5 xl:px-10 py-4 flex  w-full items-center">
+    <nav className="flex justify-center bg-yellow-500 text-white w-screen shadow-md fixed pb-1">
+      <div className="px-2 xl:px-10 py-1 flex  w-full items-center">
         <a className="text-3xl font-bold font-heading" href="/">
-        <img alt="logo" src="LOGO.png"></img>
+        <img alt="logo" width="150px" src="LOGO.png"></img>
         </a>
         <div className="hidden md:flex px-2 mx-auto font-semibold font-heading space-x-16 xl:px-10">
             <input type="text" name="" data-value="{{post.id}}" id="comment" placeholder="Search..." className="searchbar text-black px-4 h-10 rounded-full bg-gray-200 mt-2 border focus:border-black focus:bg-white focus:outline-none " autoFocus autoComplete="true" required />

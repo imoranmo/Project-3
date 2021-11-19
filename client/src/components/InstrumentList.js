@@ -18,7 +18,7 @@ const InstrumentList = ({filterList, filterHandle}) => {
     }})
 
   return ( 
-
+<div className="w-1/3">
 <MultiSelect 
         options={allInstruments}
         name="instruments"
@@ -26,7 +26,7 @@ const InstrumentList = ({filterList, filterHandle}) => {
         onChange={filterHandle}
         labelledBy="Select"
 />
-
+</div>
 
 )
   };
