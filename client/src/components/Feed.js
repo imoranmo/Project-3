@@ -57,7 +57,13 @@ const Feed = (props) => {
 
         console.log(newPosts)
         setfilteredPosts(newPosts)
+
+
     },[instruments, rhythms])
+
+    const showAllPosts = () => {
+        setfilteredPosts(posts)
+    }
 
     if (loading) {
         return <div>Loading...</div>
@@ -67,20 +73,18 @@ const Feed = (props) => {
     return (
 
 <div className="max-w-4xl px-10 mx-auto mb-4"> 
-    {loading ? (
-            <div>Loading...</div>
-          ) : (
         <>
-               <div className="flex space-x-2 my-4">
+            <div className="flex space-x-2 my-4">
                
                 <RhythmList filterList={rhythms} filterHandle={rhythmFilterHandle}/>
                 <InstrumentList filterList={instruments} filterHandle={instrumentFilterHandle}/>
+                <button onClick={showAllPosts}>Show All</button>
             </div>
             {filteredPosts.map((post) => {
         
                 return (<><div  className="max-w-4xl px-10 py-6 mx-auto bg-white rounded-lg shadow-md mb-4">
 
-                            <div className="flex items-center justify-between"><span className="font-light text-gray-600">{post.dateCreated} by: {post.user.userName}</span>
+                            <div className="flex items-center justify-between"><span className="font-light text-gray-600">{post.dateCreated} by: {post.user.userName} </span>
                             {post.user._id === Auth.getProfile().data._id ? (<a href={`/Post/${post._id}`} className="text-sm text-blue-500 underline">edit</a>) : ""}
                             </div>
                             <div className="mt-2"><a href="/" className="text-2xl font-bold text-gray-700 hover:underline">{post.title}</a>

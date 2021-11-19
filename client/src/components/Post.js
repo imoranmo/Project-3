@@ -58,13 +58,13 @@ const Post = () => {
                     variables: { ...formState, user:postData.post.user._id, _id:postData.post._id  },
                     });
                     console.log("UpdatePost")
-                    return <Redirect to="/profile/me" />;
+                    return window.location= "/profile/me";
             } else {
                  await addPost({
                     variables: { ...formState },
                     });
                     console.log("AddPost")
-                    return <Redirect to="/" />;
+                    return window.location = "/"
             }
 
             

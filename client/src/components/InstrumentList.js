@@ -24,7 +24,7 @@ const InstrumentList = ({filterList, filterHandle}) => {
         name="instruments"
         value={filterList}
         onChange={filterHandle}
-        labelledBy="Select"
+        labelledBy="Instruments"
 />
 </div>
 

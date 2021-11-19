@@ -25,7 +25,7 @@ const RhythmList = ({filterList, filterHandle}) => {
         name="rhythms"
         value={filterList}
         onChange={filterHandle}
-        labelledBy="Select"
+        labelledBy="Rhythms"
 />
 </div>
 
