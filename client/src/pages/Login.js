@@ -41,9 +41,10 @@ const Login = (props) => {
   };
 
   return (
-  <section className="flex flex-col md:flex-row h-screen items-center">
-    <div className="bg-white-600 hidden lg:block w-full md:w-1/2 xl:w-2/3 h-screen p-24">
-      <div className ="web-title text-4xl font-bold text-center">♪ A-LOTTA-RHYTHMS ♪</div>
+  <section className="w-screen flex flex-col md:flex-row h-screen items-center bg-image bg-contain bg-no-repeat bg-color">
+    <div className="hidden lg:block w-full md:w-1/2 xl:w-2/3 h-screen p-24">
+      <div className ="web-title text-4xl font-bold text-center">A-LOTTA-RHYTHMS</div>
+  
       <div className = "desc text-xl colors-yellow-400 font-semibold text-center">Connect with other musicians, share your love of music and look for music related services. </div>
     </div>
     {data ? (
@@ -52,9 +53,9 @@ const Login = (props) => {
         <Link to="/">back to the homepage.</Link>
       </p>
     ) : (
-      <div className="bg-white w-full md:max-w-md lg:max-w-full md:mx-auto md:mx-0 md:w-1/2 xl:w-1/3 h-screen px-6 lg:px-16 xl:px-12
+      <div className="w-screen bg-color w-full md:max-w-md lg:max-w-full md:mx-auto md:mx-0 md:w-1/2 xl:w-1/3 h-screen lg:px-16 xl:px-12
             flex items-center justify-center">
-        <div className="w-full h-100 border-2 shadow-lg rounded">
+        <div className="w-full h-100 border-2 shadow-lg rounded bg-white">
           <h1 className="greeting text-xl md:text-2xl font-bold leading-tight mt-12 text-center px-8"> WELCOME BACK! </h1>
           <form id='login-form' onSubmit={handleFormSubmit} className="mt-6 px-10">
             <div>
