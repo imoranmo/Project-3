@@ -3,25 +3,16 @@ import { QUERY_INSTRUMENTS } from '../utils/queries';
 import { useQuery } from '@apollo/client';
 import { MultiSelect } from "react-multi-select-component";
 
-const InstrumentList = ({preSel}) => {
+const InstrumentList = ({filterList, filterHandle}) => {
 
-    let instrumentSel = []
-    if (preSel){
-        instrumentSel = preSel.map((instrument) =>{ return {
-        value: instrument._id,
-        label: instrument.name
-    }})}
-
-    const [selected, setSelected] = useState(instrumentSel);
+    // const [selected, setSelected] = useState();
     const { loading, data } = useQuery(QUERY_INSTRUMENTS);
-
-
 
     if (loading) {
         return <div>Loading...</div>;
       }
 
-      const instruments = data.instruments.map((instrument) =>{ return {
+      const allInstruments = data.instruments.map((instrument) =>{ return {
         value: instrument._id,
         label: instrument.name
     }})
@@ -29,10 +20,10 @@ const InstrumentList = ({preSel}) => {
   return ( 
 <div className="w-1/3">
 <MultiSelect 
-        options={instruments}
+        options={allInstruments}
         name="instruments"
-        value={selected}
-        onChange={setSelected}
+        value={filterList}
+        onChange={filterHandle}
         labelledBy="Select"
 />
 </div>
