@@ -1,27 +1,19 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import { QUERY_RHYTHMS } from '../utils/queries';
 import { useQuery } from '@apollo/client';
 import { MultiSelect } from "react-multi-select-component";
 
-const RhythmList = ({preSel}) => {
+const RhythmList = ({filterList, filterHandle}) => {
 
-  let rhythmSel = []
-    if (preSel){
-      rhythmSel = preSel.map((instrument) =>{ return {
-        value: instrument._id,
-        label: instrument.name
-    }})}
 
-    const [selected, setSelected] = useState(rhythmSel);
     const { loading, data } = useQuery(QUERY_RHYTHMS);
-
 
 
     if (loading) {
         return <div>Loading...</div>;
       }
 
-      const rhythms = data.rhythms.map((rhythm) =>{ return {
+      const allRhythms = data.rhythms.map((rhythm) =>{ return {
         value: rhythm._id,
         label: rhythm.name
     }})
@@ -29,10 +21,10 @@ const RhythmList = ({preSel}) => {
   return ( 
 
 <MultiSelect 
-        options={rhythms}
+        options={allRhythms}
         name="rhythms"
-        value={selected}
-        onChange={setSelected}
+        value={filterList}
+        onChange={filterHandle}
         labelledBy="Select"
 />
 
