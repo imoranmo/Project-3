@@ -6,3 +6,4 @@ const Comment = require('./Comment');
 
 
 module.exports = { User, Rhythm, Post, Instrument, Comment };
+

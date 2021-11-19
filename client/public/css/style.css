@@ -48,3 +48,9 @@ body{
 .bg-image {
   background-image: url(../images/guitar.jpeg);
 }
+
+
+.dropdown-content{
+  color: black
+
+}

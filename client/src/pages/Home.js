@@ -15,28 +15,22 @@ const Home = () => {
       }
 
   return (
-    <main>
+    <main className="w-screen">
           {loading ? (
             <div>Loading...</div>
           ) : (
 <>
-
-    <div className="px-6 py-8 items-center w-screen">
-        <div className="container flex justify-between mx-auto">
-            <div className="w-full xl:w-2/3 bg-green-200 w-screen">
-                <div className="p-6 flex items-center justify-between ">
-                    <h1 className="mb-4 text-2xl font-bold text-gray-700">Posts</h1>
-                    
-                        <a href="/newPost/" className="rounded-lg border-2 bg-black border-black text-white hover:bg-blue-600 hover:border-blue-600 p-2 font-medium">CREATE NEW POST</a>
-                    
-                </div>
-                <Feed />
-            </div>
-            <RhythmFilter />
-        </div>
-    
-    
+<div className="flex justify-center w-screen">
+  <div className="w-full xl:w-1/2 w-screen mt-20 mb-6 ml-6 mr-10">
+  <div className="p-8 flex items-center justify-between ">
+        <h1 className="mb-4 text-3xl font-extrabold text-gray-700">Posts</h1>
+        <a href="/Post/new" className="rounded-lg border-2 bg-black border-black mr-6 text-white hover:bg-blue-600 hover:border-blue-600 p-2 font-medium">CREATE NEW POST</a>   
+    </div>
+    <Feed />
+  </div>
+  <RhythmFilter />
 </div>
+        
 </>
           )}
 </main>

@@ -36,7 +36,7 @@ export const QUERY_INSTRUMENTS= gql`
   }
 `;
 
-export const QUERY_POSTS= gql`
+export const QUERY_POSTS = gql`
   query posts ($user: ID){
     posts(user: $user){
       _id

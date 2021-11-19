@@ -8,15 +8,48 @@
       "type": "image/x-icon"
     },
     {
-      "src": "logo192.png",
+      "src": "log-out.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "logo512.png",
+      "src": "LOGO.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    },
+    {
+      "src": "user.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    },
+    {
+      "src": "rss-feed-symbol.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    },
+    {
+      "src": "magnifying-glass.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    },
+    {
+      "src": "filter-filled-tool-symbol.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    },
+    {
+      "src": "trash-bin.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    },
+    {
+      "src": "edit.png",
       "type": "image/png",
       "sizes": "512x512"
     }
+    
+    
+    
   ],
   "start_url": ".",
   "display": "standalone",

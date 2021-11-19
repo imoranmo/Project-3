@@ -1,7 +1,7 @@
 
 const { AuthenticationError } = require('apollo-server-express');
 const { signToken } = require('../utils/auth');
-const { Rhythm, Instrument, Post, User } = require('../models');
+const { Rhythm, Instrument, Post, User, Comment } = require('../models');
 
 const resolvers = {
   Query: {
@@ -94,8 +94,23 @@ const resolvers = {
         }
         const post = await Post.findOneAndUpdate({_id: postId}, {content, url, rhythm, title});
         return post;
-      }
+      },
+    addComment: async(parent,{postId, content}, context) => {
+      const user = context.user._id
+      const comId = await Comment.create({content, user})
+      let post = await Post.findOne({_id:postId})
+      const comments = post.comments
+      comments.push(comId._id);
+      await Post.findOneAndUpdate({_id:postId}, {comments}).populate('user')
+      return comId;
     },
+    updateComment: async(parent,{_id, postId}, context) => {
+      await Comment.findOneAndUpdate({_id:postId})
+    },
+    deleteComment: async(parent,{_id}, context) => {
+        return await Comment.findOneAndDelete({_id})
+    }
+  }
   };
   
   module.exports = resolvers;

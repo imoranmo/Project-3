@@ -12,8 +12,8 @@ import Home from './pages/Home';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
 import Profile from './pages/Profile';
+import ProfileEdit from './pages/ProfileEdit';
 import Navbar from './components/Navbar';
-// import Footer from './components/Footer';
 import Post from './components/Post'
 
 // Construct our main GraphQL API endpoint
@@ -44,9 +44,8 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <Router>
-        <div className="flex-column justify-flex-start min-100-vh w-screen">
+
           <Navbar />
-          <div className="container w-screen">
             <Route exact path="/">
               <Home />
             </Route>
@@ -59,11 +58,14 @@ function App() {
             <Route exact path="/profile/:userName">
               <Profile />
             </Route>
+            <Route exact path="/profileEdit">
+              <ProfileEdit />
+            </Route>
             <Route exact path="/post/:postId">
               <Post/>
             </Route>
-          </div>
-        </div>
+         
+       
       </Router>
     </ApolloProvider>
   );

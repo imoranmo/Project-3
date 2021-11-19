@@ -1,48 +1,85 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import { QUERY_POSTS } from '../utils/queries';
 import { useQuery } from '@apollo/client';
+import InstrumentList from './InstrumentList'
+import RhythmList from './RhythmList'
+import Comment from "./Comment"
 
 import Auth from '../utils/auth';
 
 const Feed = (props) => {
 
     const {user} = props
-    const { loading, data } = useQuery(QUERY_POSTS, {variables: {user: user}});
+ 
+    const [rhythms, setRhythms] = useState(window.localStorage.getItem('rhythmFilters') || [])
+    const [instruments, setInstruments] = useState(JSON.parse(window.localStorage.getItem('instrumentFilters')) || [])
+    const [posts, setPosts] = useState([])
+    const [filteredPosts, setfilteredPosts] = useState([])
 
-    
-    
-     if (user) {
-        console.log(Auth.getProfile().data._id)
-     } 
+    const instrumentFilterHandle = (event) => {
+        setInstruments(event)
+    }
+    const rhythmFilterHandle = (event) => {
+        setRhythms(event)
+    }
 
-    const commentToggleHandler = async (event) => {
-        // Stop the browser from submitting the form so we can do so with JavaScript
-            event.preventDefault();
-      
-            const commentBlock = event.target.nextElementSibling;
-            
-            const toggleBtn = event.target
-            
-            commentBlock.classList.toggle("hidden");
-            if (commentBlock.classList.contains("hidden")) {
-              toggleBtn.innerHTML = "Show Comments"
-            } else {
-              toggleBtn.innerHTML = "Hide Comments"
+    const { loading, data } = useQuery(QUERY_POSTS, {variables: {user}});
+
+    useEffect(()=> {
+       setPosts(data?.posts)
+       setfilteredPosts(data?.posts)
+    },[data])
+
+
+    useEffect(()=>{
+        console.log(instruments)
+        console.log(rhythms)
+
+        const newPosts = posts.filter((post) => {
+            let inst = false
+            for ( let i=0; i < rhythms.length; i++){
+                console.log(rhythms[i].value)
+                if (rhythms[i].value === post.rhythm._id){
+                    inst =  true;
+                }
             }
-        
-          };
-      
-    
+            let rhyth = false
+            for ( let j=0; j < instruments.length; j++){
+                for (let k=0; k < post.user.instruments.length; k++){
+                
+                if (instruments[j].value === post.user.instruments[k]._id){
+                    rhyth = true;
+                }
+            }
+        }
+            return inst && rhyth
+        })
+
+        console.log(newPosts)
+        setfilteredPosts(newPosts)
+    },[instruments, rhythms])
+
+    if (loading) {
+        return <div>Loading...</div>
+    }
+
+
     return (
 
-<div className="mt-6"> 
+<div className="max-w-4xl px-10 mx-auto mb-4"> 
     {loading ? (
             <div>Loading...</div>
           ) : (
         <>
-            {data.posts.map((post) => {
+               <div className="flex space-x-2 my-4">
+               
+                <RhythmList filterList={rhythms} filterHandle={rhythmFilterHandle}/>
+                <InstrumentList filterList={instruments} filterHandle={instrumentFilterHandle}/>
+            </div>
+            {filteredPosts.map((post) => {
         
-                return (<><div className="max-w-4xl px-10 py-6 mx-auto bg-white rounded-lg shadow-md">
+                return (<><div  className="max-w-4xl px-10 py-6 mx-auto bg-white rounded-lg shadow-md mb-4">
+
                             <div className="flex items-center justify-between"><span className="font-light text-gray-600">{post.dateCreated} by: {post.user.userName}</span>
                             {post.user._id === Auth.getProfile().data._id ? (<a href={`/Post/${post._id}`} className="text-sm text-blue-500 underline">edit</a>) : ""}
                             </div>
@@ -51,25 +88,11 @@ const Feed = (props) => {
                                 <div>{post.content}</div>
                                 <div><a className="text-blue-700 underline" target="_blank" href="{{{post.url}}}">{post.url}</a></div>
                             </div>
-                            <div className="flex items-center justify-between mt-4">
-                                <button id="toggle-comments" value="{{post.id}}" onClick={commentToggleHandler} className="text-blue-500 hover:underline">Show Comments</button>
-                                <div className="hidden" id="comments">
-                                <h1>Comments:</h1>
-                                    {post.comments.map((comment) => {
-                                        return (<div class="float-left max-w-4xl px-10 py-4 mx-auto mb-2 bg-gray-200 rounded-lg shadow-md">
-                                                    <h3 class="italic text-grey-200 text-sm">{comment.user.userName} on {comment.dateCreated}</h3>
-                                                    <p class=" float-left font-semibold">{comment.content}</p>
-                                                </div>)
-                                    })}
-                                </div>
-                            </div>
-                            <div className="mb-4 rounded-full">
-                                <input type="text" name="" data-value="{{post.id}}" id="comment" placeholder="Add a comment!" className="mt-4 w-full px-4 py-3 rounded-full bg-gray-200 mt-2 border focus:border-black focus:bg-white focus:outline-none " autoComplete='true' required />
-                            </div>
+                            <Comment data={post.comments} postId={post._id}/>
                         </div></>)
             })}
         </>
-    )}
+    
      
 </div>
 )};

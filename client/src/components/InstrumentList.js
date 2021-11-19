@@ -1,25 +1,33 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { QUERY_INSTRUMENTS } from '../utils/queries';
 import { useQuery } from '@apollo/client';
+import { MultiSelect } from "react-multi-select-component";
 
-const InstrumentList = () => {
+const InstrumentList = ({filterList, filterHandle}) => {
 
+    // const [selected, setSelected] = useState();
     const { loading, data } = useQuery(QUERY_INSTRUMENTS);
 
+    if (loading) {
+        return <div>Loading...</div>;
+      }
 
-  return (
-<>
-    <div class="flex items-center space-x-3 font-bold text-gray-700 text-2xl leading-8 mb-4">
-        <span>Instruments</span>
-    </div>
-    <div class="bg-white p-1 rounded-lg shadow-lg">
-        <div class="flex items-center space-x-3 font-semibold text-gray-900 text-2xl leading-8 mb-4 underline">
-        </div>
-        <div class="grid grid-cols-3 gap-1 mb-2">
-            <div class="rounded-lg bg-yellow-500 text-center">Banjo</div>
-        </div>
-    </div>
-</>
-  )};
+      const allInstruments = data.instruments.map((instrument) =>{ return {
+        value: instrument._id,
+        label: instrument.name
+    }})
 
+  return ( 
+<div className="w-1/3">
+<MultiSelect 
+        options={allInstruments}
+        name="instruments"
+        value={filterList}
+        onChange={filterHandle}
+        labelledBy="Select"
+/>
+</div>
+
+)
+  };
   export default InstrumentList;
