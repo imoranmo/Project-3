@@ -81,22 +81,32 @@ const Comment = ({data, postId}) => {
 
 return (
 
-<div className="flex items-center justify-between mt-4">
+<div className="items-center justify-between mt-4">
     <button id="toggle-comments" value="{{post.id}}" onClick={commentToggleHandler} className="text-blue-500 hover:underline">Show Comments</button>
     <div className="hidden" id="comments">
-        <h1>Comments:</h1>
+      
         <>
             {commentState ? commentState.map((comment) => {
                 return (
                 <>
-                    <div  className="float-left max-w-4xl px-10 py-4 mx-auto mb-2 bg-gray-200 rounded-lg shadow-md">
+                
+                <div className="flex justify-between w-full bg-gray-200 rounded-sm mt-4">
+                    <h3 className="italic text-grey-200 text-sm">{comment.user.userName} on {comment.dateCreated}</h3>
+                            <div className="flex justify-end w-auto">
+                                {comment.user._id === activeUser ? (<button onClick={removeComment} data-remove={comment._id}><img alt="delComment" data-remove={comment._id} src="trash-bin.png" title="Delete Comment"className="w-4 h-4 "></img></button>): ""}
+                                {comment.user._id === activeUser ? (<button onClick={editComment} data-edit={comment._id}  className="px-4"><img alt="editComment" data-edit={comment._id} src="edit.png" title="Edit Comment"className="w-4 h-4 "></img></button>): ""}
+                                
+                            </div>
+                            
+                </div>
                         
-                        {comment.user._id === activeUser ? (<button onClick={removeComment} data-remove={comment._id} className="w-1/6 h-1/6"><img alt="delComment" data-remove={comment._id} src="trash-bin.png" title="delComment"className="w-7 h-7"></img></button>): ""}
-                        {comment.user._id === activeUser ? (<button onClick={editComment} data-edit={comment._id} className="w-1/6 h-1/6"><img alt="editComment" data-edit={comment._id} src="edit.png" title="editComment"className="w-7 h-7"></img></button>): ""}
-
-                        <h3 className="italic text-grey-200 text-sm">{comment.user.userName} on {comment.dateCreated}</h3>
-                        <p className=" float-left font-semibold">{comment.content}</p>
-                    </div>
+                <p className=" h-auto float-left font-semibold break-words mb-4">{comment.content}</p>
+                            
+                          
+                        
+                        
+                    
+              
 
                 </>    )
             }) :""}
