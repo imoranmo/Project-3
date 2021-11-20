@@ -40,23 +40,23 @@ const Profile = () => {
     <div className="flex justify-center w-screen">
 
     <div className="bg-white p-6 mt-24 border-2 border-grey-500 rounded-lg shadow-xl w-1/4 h-3/4">
-     <h1 className="text-2xl  text-gray-700 font-bold">{userName}'s Profile</h1>    
-     <div className="image overflow-hidden">{canEdit && (<a href="/profileEdit" title="Click to change profile picture">Edit Profile</a>)}<img className="h-auto w-full mx-auto rounded-full" src={'https://scontent.fsan1-1.fna.fbcdn.net/v/t1.6435-9/49808026_10218272793601425_7188438367623708672_n.jpg?_nc_cat=106&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=xGNmh0ih8VsAX-hTR0_&tn=3MZesCyXywzSWgmY&_nc_ht=scontent.fsan1-1.fna&oh=37d4a05edceb585fc2c25d18c3f5810c&oe=61BCC02A'} alt="profilepic"/>
+     <h1 className="text-2xl  text-gray-700 font-bold">My Profile</h1>    
+     <div className="image overflow-hidden"><img className="h-auto w-full mx-auto rounded-full" src={'https://scontent.fsan1-1.fna.fbcdn.net/v/t1.6435-9/49808026_10218272793601425_7188438367623708672_n.jpg?_nc_cat=106&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=xGNmh0ih8VsAX-hTR0_&tn=3MZesCyXywzSWgmY&_nc_ht=scontent.fsan1-1.fna&oh=37d4a05edceb585fc2c25d18c3f5810c&oe=61BCC02A'} alt="profilepic"/>{canEdit && (<a href="/profileEdit" title="Click to change profile picture" className="underline text-blue-400 float-right text-sm">Edit Profile</a>)}
      </div>
-     <h1 className="text-gray-900 font-bold text-xl leading-8 my-1">{`${data.user.firstName} ${data.user.lastName}`}</h1>
-     <h3 className="text-blue-600 font-lg text-semibold leading-6 mb-2">Username: <span className="text-black">{data.user.userName}</span></h3>
+     <h3 className="text-gray-900 font-bold text-lg leading-8 my-1">Name: <span className="text-blue-600">{`${data.user.firstName} ${data.user.lastName}`}</span></h3>
+     <h3 className="text-lg font-bold leading-6 mb-2">Username: <span className="text-blue-600 ">{data.user.userName}</span></h3>
      <p className="text-lg text-grey-500 leading-6 font-semibold">About me: </p><span className="font-small text-base">{data.user.bio}</span>
      <div class="items-center space-x-3 font-bold text-2xl leading-8 mt-4">
-     <h1>Instruments</h1>
+     <h3 className="text-lg">Instruments</h3>
    </div>
 
    <div class="flex items-center space-x-3 font-semibold text-gray-900 text-2xl leading-8 mb-4 underline">
      </div>
      {/* {data.user.instrument} */}
      {data.user.instruments ? (data.user.instruments.map((instrument) => {
-           return (<div class="grid grid-cols-3 gap-1 mb-2">
-               <div class="rounded-lg bg-yellow-500 text-center">{instrument.name}</div>
-           </div>)
+           return (
+               <div class="rounded-lg bg-yellow-500 text-center w-auto p-1 mb-2">{instrument.name}</div>
+           )
      })) : (<div class="grid grid-cols-3 gap-1 mb-2"><div class="rounded-lg bg-yellow-500 text-center">Kazoo</div></div>)}
  
        </div>

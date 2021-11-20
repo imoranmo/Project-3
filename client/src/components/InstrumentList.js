@@ -18,7 +18,7 @@ const InstrumentList = ({filterList, filterHandle}) => {
     }})
 
   return ( 
-<div className="w-1/3">
+<div className="w-1/3 shadow-md">
 <MultiSelect 
         options={allInstruments}
         name="instruments"
