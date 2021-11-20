@@ -117,7 +117,7 @@ return (
                     </div>
                     <div className="mb-4">
                         <label className="text-xl text-gray-600">Instruments</label>
-                        <InstrumentList className="rounded-lg border-2 border-gray-300 p-2 w-full"  preSel={data.user.instruments}/>
+                        {/* <InstrumentList className="rounded-lg border-2 border-gray-300 p-2 w-full"  preSel={data.user.instruments}/> */}
                     </div>
                     <div>
                         <label className="text-xl text-gray-600">About Me</label>

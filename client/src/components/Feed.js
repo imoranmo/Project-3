@@ -67,9 +67,7 @@ const Feed = (props) => {
     return (
 
 <div className="max-w-4xl px-10 mx-auto mb-4"> 
-    {loading ? (
-            <div>Loading...</div>
-          ) : (
+    
         <>
                <div className="flex space-x-2 my-4">
                
@@ -92,8 +90,7 @@ const Feed = (props) => {
                         </div></>)
             })}
         </>
-    
-     
+  
 </div>
 )};
 export default Feed;
