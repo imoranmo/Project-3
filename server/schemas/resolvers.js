@@ -90,14 +90,15 @@ const resolvers = {
         const post = await Post.create({...args, user});
         return post;
       },
-      updatePost: async(parent, {postId, content, url, rhythm, title, user }, context) => {
+      updatePost: async(parent, {_id, content, url, rhythm, title, user }, context) => {
         const loggedUserId = context.user._id;
         if (!loggedUserId){
           throw new AuthenticationError('You must ben signed in');
         } else if (loggedUserId != user) {
           throw new AuthenticationError(`You can't edit this post`);
         }
-        const post = await Post.findOneAndUpdate({_id: postId}, {content, url, rhythm, title});
+        const post = await Post.findOneAndUpdate({_id}, {content, url, rhythm, title});
+        
         return post;
       },
     addComment: async(parent,{postId, content}, context) => {

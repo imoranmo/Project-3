@@ -4,6 +4,8 @@ import { QUERY_RHYTHMS, QUERY_POST } from '../utils/queries';
 import { useQuery, useMutation } from '@apollo/client';
 import { UPDATE_POST, ADD_POST } from '../utils/mutations';
 import { useParams } from 'react-router-dom';
+import { CKEditor } from '@ckeditor/ckeditor5-react';
+import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
 import Auth from '../utils/auth';
 
@@ -34,20 +36,33 @@ const Post = () => {
     const [updatePost, { error: updateError, data: updateData }] = useMutation(UPDATE_POST);
 
     useEffect(()=>{
-        if (postData){
+        if (postData && postData.post._id){
             const rhythm =postData.post.rhythm._id
             setFormState({...postData.post, rhythm})
+            console.log(postData)
+        } else if(rhythmData){
+            const firstRhythm = rhythmData.rhythms[0]._id
+            setFormState({...formState,rhythm: firstRhythm})
         }
-    },[postData])
+        
+    },[postData, rhythmData])
     
     if (!Auth.loggedIn()) {
         return <Redirect to="/login" />;
       }
       
 
+    const handleTextChange = (event, editor) => {
+            const data = editor.getData();
+            const name = "content"
 
+        setFormState({
+            ...formState, [name]: data
+        });
+        console.log(formState)
+    };
     const handleChange = (event) => {
-        const { name, value } = event.target;
+        const { name, value} = event.target;
         setFormState({
             ...formState,
             [name]: value,
@@ -85,14 +100,12 @@ const Post = () => {
 
 
 let canEdit
-let rhythmId = null
    if (postLoad || rhythmLoad) {
     return <div>Loading...</div>;
   }
 
   if (postData.post._id){
         canEdit = true;
-        rhythmId = postData.post.rhythm._id
    } else {
         canEdit = false
    }
@@ -111,7 +124,7 @@ return (
                     </div>
                     <div>
                         <label className="text-xl text-gray-600">Rhythm</label>
-                        <select id='rhythm' name="rhythm" onChange={handleChange} className="w-full py-4 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" defaultValue={rhythmId} >
+                        <select id='rhythm' name="rhythm" onChange={handleChange} className="w-full py-4 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" defaultValue={canEdit ? postData.post.rhythm._id : ""} >
                 
                                     {(rhythmData.rhythms.map((rhythm, index)=> {
                                         return (<option key={index} value={rhythm._id}>{rhythm.name}</option>)
@@ -121,10 +134,21 @@ return (
                     <div className="mb-4">
                         <label className="text-xl text-gray-600">Content<span className="text-red-500">*</span></label>
                         <div>
-                        
+
+                        <CKEditor
+                            editor={ ClassicEditor }
+                            data={postData ? postData.post.content : ""}
+                            toolbar={'bold'}
+                            onReady={ editor => {
+                                // You can store the "editor" and use when it is needed.
+                                console.log( 'Editor is ready to use!', editor );
+                            } }
+                            onChange={ handleTextChange }
+                        />
+{/*                         
                         <textarea defaultValue={postData ? postData.post.content : ""} onChange={handleChange}  id='content' name="content" className="rounded-lg border-2 border-gray-500">
                                 
-                        </textarea>
+                        </textarea> */}
                         </div>
                     </div>
                     <div className="mb-8">

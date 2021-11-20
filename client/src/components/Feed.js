@@ -89,7 +89,7 @@ const Feed = (props) => {
                             </div>
                             <div className="mt-2"><a href="/" className="text-2xl font-bold text-gray-700 hover:underline">{post.title}</a>
                                 <div className="text-blue-700">#{post.rhythm.name}</div>
-                                <div>{post.content}</div>
+                                <div dangerouslySetInnerHTML={{__html: post.content}}></div>
                                 <div><a className="text-blue-700 underline" target="_blank" href="{{{post.url}}}">{post.url}</a></div>
                             </div>
                             <Comment data={post.comments} postId={post._id}/>
