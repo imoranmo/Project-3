@@ -13,6 +13,7 @@ export const QUERY_USER = gql`
       rating
       instruments {
         name
+        _id
       }
     }
   }

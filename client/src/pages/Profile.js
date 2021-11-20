@@ -41,7 +41,7 @@ const Profile = () => {
 
     <div className="bg-white p-6 mt-24 border-2 border-grey-500 rounded-lg shadow-xl w-1/4 h-3/4">
      <h1 className="text-2xl  text-gray-700 font-bold">My Profile</h1>    
-     <div className="image overflow-hidden"><img className="h-auto w-full mx-auto rounded-full" src={'https://scontent.fsan1-1.fna.fbcdn.net/v/t1.6435-9/49808026_10218272793601425_7188438367623708672_n.jpg?_nc_cat=106&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=xGNmh0ih8VsAX-hTR0_&tn=3MZesCyXywzSWgmY&_nc_ht=scontent.fsan1-1.fna&oh=37d4a05edceb585fc2c25d18c3f5810c&oe=61BCC02A'} alt="profilepic"/>{canEdit && (<a href="/profileEdit" title="Click to change profile picture" className="underline text-blue-400 float-right text-sm">Edit Profile</a>)}
+     <div className="image overflow-hidden"><img className="h-auto w-full mx-auto rounded-full" src={data.user.img || 'https://uwosh.edu/deanofstudents/wp-content/uploads/sites/156/2019/02/profile-default.jpg'} alt="profilepic"/>{canEdit && (<a href="/profileEdit" title="Click to change profile picture" className="underline text-blue-400 float-right text-sm">Edit Profile</a>)}
      </div>
      <h3 className="text-gray-900 font-bold text-lg leading-8 my-1">Name: <span className="text-blue-600">{`${data.user.firstName} ${data.user.lastName}`}</span></h3>
      <h3 className="text-lg font-bold leading-6 mb-2">Username: <span className="text-blue-600 ">{data.user.userName}</span></h3>

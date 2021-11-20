@@ -24,12 +24,14 @@ useEffect(()=> {
     if (data) {
         const {firstName, lastName, userName, bio, email} = data.user
         setFormState({firstName, lastName, userName, bio, email})
-        console.log(data)
+        
         if (data.user.instruments) {
+            console.log(data)
             const multiInstruments = data.user.instruments.map((instrument) => {
                 
                 const label = instrument.name
                 const value = instrument._id
+                console.log(value, label)
                 return {label, value}
 
             })
