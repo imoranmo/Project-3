@@ -1,3 +1,5 @@
+@import "react-slideshow-image/dist/styles.css";
+
 body{
   font-family: 'Didact Gothic', sans-serif;
 }
@@ -53,4 +55,16 @@ body{
 .dropdown-content{
   color: black
 
+}
+.each-slide > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-size: cover;
+  height: 350px;
+}
+
+.each-slide span {
+  padding: 20px;
+  font-size: 20px;
 }

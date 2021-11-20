@@ -72,7 +72,7 @@ const Feed = (props) => {
 
     return (
 
-<div className="max-w-4xl px-10 mx-auto mb-4"> 
+<div className="max-w-3xl px-10 mx-auto mb-4"> 
         <>
             <div className="flex space-x-2 my-4">
                

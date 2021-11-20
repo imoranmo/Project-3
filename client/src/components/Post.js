@@ -113,7 +113,7 @@ let canEdit
 
 return (
 <div className="py-24">
-    <div className="max-w-5xl mx-auto sm:px-6 lg:px-8 ">
+    <div className="max-w-2xl mx-auto sm:px-6 lg:px-8 ">
         <div className="bg-white border-2 overflow-hidden shadow-lg sm:rounded-lg">
             <div className="p-6 bg-white">
                 <h1 className="np-title mb-8 text-3xl font-bold">{canEdit ? "EDIT POST" : "NEW POST"}</h1>
