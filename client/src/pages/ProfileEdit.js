@@ -14,7 +14,6 @@ const userName = Auth.getProfile().data.userName
 const { loading, data} = useQuery(QUERY_USER, {variables: { userName } });
 const [updateUser, { error, data: updateData }] = useMutation(UPDATE_USER);
 const [instruments, setInstruments] = useState([])
-const [selectedFile, setSelectedFile] = useState(null);
 
 
 const instrumentSelectHandle = (event) => {
@@ -43,13 +42,6 @@ useEffect(()=> {
     const selectedInstruments = instruments.map((instrument) => instrument.value)
     setFormState((formState) => {return {...formState, instruments: selectedInstruments}})
  },[instruments])
-
- useEffect(()=>{
-    setFormState((selectedFile) => {
-        const img = selectedFile;
-        return {...formState, img}
-    })
- }, [selectedFile])
 
 const [formState, setFormState] = useState({
         firstName: "",
