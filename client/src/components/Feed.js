@@ -84,7 +84,7 @@ const Feed = (props) => {
         
                 return (<><div  className="max-w-4xl px-10 py-6 mx-auto bg-white rounded-lg shadow-md mb-4">
 
-                            <div className="flex items-center justify-between"><span className="font-light text-gray-600">{post.dateCreated} by: <a className="underline text-blue-400 float-right" href={`/profile/${post.user.userName}`}>{post.user.userName}</a></span>
+                            <div className="flex items-center justify-between"><span className="font-light text-gray-600">{post.dateCreated} by:&nbsp;&nbsp;<a className="underline text-blue-400 float-right" href={`/profile/${post.user.userName}`}>{post.user.userName}</a></span>
                             {post.user._id === Auth.getProfile().data._id ? (<a href={`/Post/${post._id}`} className="text-sm text-blue-500 underline">edit</a>) : ""}
                             </div>
                             <div className="mt-2"><a href="/" className="text-2xl font-bold text-gray-700 hover:underline">{post.title}</a>
