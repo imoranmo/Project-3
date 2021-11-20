@@ -11,8 +11,27 @@
     "name":"Flute"
 },
 {
-    "name":"Sexy Sax"
+    "name":"Saxophone"
 },
 {
     "name":"Guitar"
-}]
+},
+{
+    "name":"Piano"
+},
+{
+    "name":"Violin"
+},
+{
+    "name":"Trumpet"
+},
+{
+    "name":"Clarinet"
+},
+{
+    "name":"Percussion"
+},
+{
+    "name":"Vocals"
+}
+]
