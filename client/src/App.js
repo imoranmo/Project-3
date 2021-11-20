@@ -6,7 +6,7 @@ import {
   createHttpLink,
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import Home from './pages/Home';
 import Signup from './pages/Signup';
@@ -46,8 +46,8 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <Router>
-
           <Navbar />
+          <Switch>
             <Route exact path="/">
               <Home />
             </Route>
@@ -66,6 +66,7 @@ function App() {
             <Route exact path="/post/:postId">
               <Post/>
             </Route>
+          </Switch>
          
        
       </Router>
