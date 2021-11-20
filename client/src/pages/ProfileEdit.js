@@ -68,10 +68,6 @@ const handleChange = (event) => {
     });
 };
 
-const handlePhoto = (e) => {
-    setFormState({...formState, img: e.target.files[0]});
-}
-
 const handleFormSubmit = async (event) => {
     event.preventDefault();
     console.log(formState);
@@ -105,10 +101,11 @@ return (
                     <div className="mb-4">
                         <label className="text-xl text-gray-600">Profile Photo</label>
                         <input className="rounded-lg border-2 border-gray-300 p-2 w-full"
-                            type="file" 
+                            type="text" 
                             accept=".png, .jpg, .jpeg"
-                            name="photo"
-                            onChange={handlePhoto}
+                            name="img"
+                            defaultValue={data.user.img}
+                            onChange={handleChange}
                         />                    
                     </div>
                     <div>
