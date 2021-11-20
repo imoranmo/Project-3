@@ -13,16 +13,43 @@ const userName = Auth.getProfile().data.userName
 
 const { loading, data} = useQuery(QUERY_USER, {variables: { userName } });
 const [updateUser, { error, data: updateData }] = useMutation(UPDATE_USER);
-const [instruments, setInstruments] = useState(JSON.parse(window.localStorage.getItem('instrumentFilters')) || [])
+const [instruments, setInstruments] = useState([])
+const [selectedFile, setSelectedFile] = useState(null);
+
 
 const instrumentSelectHandle = (event) => {
     setInstruments(event)
 }
 
 useEffect(()=> {
+    if (data) {
+        const {firstName, lastName, userName, bio, email} = data.user
+        setFormState({firstName, lastName, userName, bio, email})
+        console.log(data)
+        if (data.user.instruments) {
+            const multiInstruments = data.user.instruments.map((instrument) => {
+                
+                const label = instrument.name
+                const value = instrument._id
+                return {label, value}
+
+            })
+            setInstruments(multiInstruments)
+        }
+    }
+},[data])
+
+useEffect(()=> {
     const selectedInstruments = instruments.map((instrument) => instrument.value)
     setFormState((formState) => {return {...formState, instruments: selectedInstruments}})
  },[instruments])
+
+ useEffect(()=>{
+    setFormState((selectedFile) => {
+        const img = selectedFile;
+        return {...formState, img}
+    })
+ }, [selectedFile])
 
 const [formState, setFormState] = useState({
         firstName: "",
@@ -31,13 +58,7 @@ const [formState, setFormState] = useState({
         email:"",
         img: "",
         bio: ""
-      });
-
-if (!Auth.loggedIn()){
-    return <Redirect to="/login" />;
-}
-
-  
+      }); 
 
 const handleChange = (event) => {
     const { name, value } = event.target;
@@ -47,8 +68,8 @@ const handleChange = (event) => {
     });
 };
 
-const handlePhoto = () => {
-    return console.log("PHOTO")
+const handlePhoto = (e) => {
+    setFormState({...formState, img: e.target.files[0]});
 }
 
 const handleFormSubmit = async (event) => {
@@ -64,11 +85,14 @@ const handleFormSubmit = async (event) => {
     } catch (e) {
         console.error(e);
     }
-    };
+};
 
+if (!Auth.loggedIn()){
+    return <Redirect to="/login" />;
+}
 
 if (loading) {
-return <div>Loading...</div>;
+    return <div>Loading...</div>;
 }
 
 return (
@@ -129,7 +153,7 @@ return (
                     </div>
                     <div className="mb-4">
                         <label className="text-xl text-gray-600">Instruments</label>
-                        <InstrumentList name='instruments' filterList={instruments} filterHandle={instrumentSelectHandle} className="rounded-lg border-2 border-gray-300 p-2 w-full" />
+                        <InstrumentList filterList={instruments} filterHandle={instrumentSelectHandle} className="rounded-lg border-2 border-gray-300 p-2 w-full" />
                     </div>
                     <div>
                         <label className="text-xl text-gray-600">About Me</label>
