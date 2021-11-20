@@ -56,7 +56,7 @@ const handleFormSubmit = async (event) => {
     console.log(formState);
 
     try {
-        
+       
         await updateUser({
             variables: { ...formState},
             });
