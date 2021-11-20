@@ -22,8 +22,8 @@ const instrumentSelectHandle = (event) => {
 
 useEffect(()=> {
     if (data) {
-        const {firstName, lastName, userName, bio, email} = data.user
-        setFormState({firstName, lastName, userName, bio, email})
+        const {firstName, lastName, userName, bio, email, img} = data.user
+        setFormState({firstName, lastName, userName, bio, email, img})
         
         if (data.user.instruments) {
             console.log(data)

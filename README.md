@@ -1,38 +1,77 @@
 # A-LOTTA-RHYTHMS
+![](https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white)
+![](https://img.shields.io/badge/Express.js-404D59?style=for-the-badge)
+![](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+![](https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white)
 
-## Objective:
+## <ins>Table of Contents</ins>
+- [A-LOTTA-RHYTHMS](#a-lotta-rhythms)
+  - [<ins>Table of Contents</ins>](#instable-of-contentsins)
+  - [<ins>Objective</ins>](#insobjectiveins)
+  - [<ins>Experience</ins>](#insexperienceins)
+  - [<ins>Motivation</ins>](#insmotivationins)
+  - [<ins>Technologies</ins>](#instechnologiesins)
+  - [<ins>Installation</ins>](#insinstallationins)
+  - [<ins>Future Improvements</ins>](#insfuture-improvementsins)
+  - [<ins>Link</ins>](#inslinkins)
+
+
+## <ins>Objective</ins>
 
 A-LOTTA-RHYTHMS is an online social platform where music enthusiasts can connect with each other and create music together. 
 
 
-## Experience:
+## <ins>Experience</ins>
 
-Once a user signs up they will be able to choose their rhythm as we are calling it. Our rhythms consists of such things as looking for a band member,  wanting to learn an instrument, or looking for a place to play at. Users can view other users' posts(rhythms) and apply respond to the ones they are interested in. Users can also post their own rhythms for others to look at help with their music needs. 
+when a user creates an account on this site, they will be sent to the main page that has all of the existing posts displayed. They can filter the posts and add comments wherever they want. Then, they can navigate to their profile and update their bio, their profile pic, and even add some instruments to their user. When a user makes a post, they select a "Rhythm" which is essentially hte category of what their post is about. All users on this site should be able to take advantages to posts/comments to coordinate with other music enthusiasts to meet all of their musical needs
 
-## Motivation:
+## <ins>Motivation</ins>
 
-We decided to create a platform for those who live and breathe music in which they can easily connect with each other and feel comfortable with members of the community knowing this platform is specifically for music enthusiasts. 
+We decided to create a platform for those who live and breathe music so they can easily connect with each others and a community of like-minded music enthusiasts. 
 
 
-## Technologies used:
+## <ins>Technologies</ins>
 React
+GraphQL
 MongoDB
-HTML
-CSS
+Mongoose
+Express
+Node
+NPM
 
-## Directions:
+## <ins>Installation</ins>
+-Prerequisites: Local MongoDB server running, Node installed, Git repository set-up
+-Clone the repo
+-Open a terminal into the root folder
+-In the root enter the following, allowing each to complete: 
+ ```md
+ npm install
+ ```
+  ```md
+npm run seed
+ ```
+  ```md
+npm run develop
+ ```
 
-Being able to filter through users and be able to reach out to specific ones based on users' profile
-
-Be able to pin specific posts and delete ones that do not sound appealing
-
-Be able to notify respondents when a new post is made, or a comment is added to a rhythm they are interested in.
+ -You should now have an app running at localhost that you can play around with!
 
 
+## <ins>Future Improvements</ins>
+
+There are may ways we can improve this site. As-is, it can be considered an MVP or a proof of concept. We'd like to continue developing it and eventually have a social media site that's on par with Facebook, Soundcloud, or at least Myspace. 
+
+Some future features:
+-Add photo collections
+-Allow users to load their own music to their posts and profiles
+-Create P2P messaging
+-Create previews for links loaded in posts
+-Handle user de-activation
+-Close auth loopholes
+-Add an event calendar to profiles
 
 
-## Link:
+## <ins>Link</ins>
 
-
-App: https://stark-depths-75098.herokuapp.com/
+DEMO App: https://stark-depths-75098.herokuapp.com/
 Github repo: https://github.com/imoranmo/Project-3
