@@ -21,7 +21,7 @@ const instrumentSelectHandle = (event) => {
 
 useEffect(()=> {
     const selectedInstruments = instruments.map((instrument) => instrument.value)
-    setFormState((formState) => {return {...formState, selectedInstruments}})
+    setFormState((formState) => {return {...formState, instruments: selectedInstruments}})
  },[instruments])
 
 const [formState, setFormState] = useState({
@@ -45,7 +45,6 @@ const handleChange = (event) => {
         ...formState,
         [name]: value,
     });
-    console.log(formState)
 };
 
 const handlePhoto = () => {
@@ -57,10 +56,11 @@ const handleFormSubmit = async (event) => {
     console.log(formState);
 
     try {
+        
         await updateUser({
             variables: { ...formState},
             });
-            return window.location = "/profile/me";
+            return window.location = "/profile/" + userName;
     } catch (e) {
         console.error(e);
     }
@@ -93,7 +93,7 @@ return (
                             type="text"
                             placeholder="First Name"
                             name="firstName"
-                            deaultValue={data.user.firstName}
+                            defaultValue={data.user.firstName}
                             onChange={handleChange}
                         />
                     </div>
@@ -129,7 +129,7 @@ return (
                     </div>
                     <div className="mb-4">
                         <label className="text-xl text-gray-600">Instruments</label>
-                        <InstrumentList filterList={instruments} filterHandle={instrumentSelectHandle} className="rounded-lg border-2 border-gray-300 p-2 w-full" />
+                        <InstrumentList name='instruments' filterList={instruments} filterHandle={instrumentSelectHandle} className="rounded-lg border-2 border-gray-300 p-2 w-full" />
                     </div>
                     <div>
                         <label className="text-xl text-gray-600">About Me</label>
