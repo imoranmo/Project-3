@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import { Redirect, Link } from 'react-router-dom';
 import { QUERY_RHYTHMS, QUERY_POST } from '../utils/queries';
 import { useQuery, useMutation } from '@apollo/client';
@@ -32,11 +32,19 @@ const Post = () => {
 
     const [addPost, { error: addError, data: addData }] = useMutation(ADD_POST);
     const [updatePost, { error: updateError, data: updateData }] = useMutation(UPDATE_POST);
+
+    useEffect(()=>{
+        if (postData){
+            const rhythm =postData.post.rhythm._id
+            setFormState({...postData.post, rhythm})
+        }
+    },[postData])
     
     if (!Auth.loggedIn()) {
         return <Redirect to="/login" />;
       }
       
+
 
     const handleChange = (event) => {
         const { name, value } = event.target;
@@ -49,16 +57,17 @@ const Post = () => {
     const handleFormSubmit = async (event) => {
         event.preventDefault();
         console.log(formState);
+        let userName;
 
         try {
             if(postData.post._id){
-                const userId = postData.post.user._id
-                console.log(userId)
+                userName = postData.post.user.userName
+                console.log(userName)
                  await updatePost({
                     variables: { ...formState, user:postData.post.user._id, _id:postData.post._id  },
                     });
                     console.log("UpdatePost")
-                    return window.location= "/profile/me";
+                    return window.location= "/profile/" + userName ;
             } else {
                  await addPost({
                     variables: { ...formState },
@@ -98,11 +107,11 @@ return (
                 <form id='newPost-form' onSubmit={handleFormSubmit}>
                     <div className="mb-4">
                         <label className="text-xl text-gray-600">Title<span className="text-red-500">*</span></label>
-                        <input type="text" onLoad={handleChange} onChange={handleChange} className="rounded-lg border-2 border-gray-300 p-2 w-full" name="title" id="title" defaultValue={canEdit ? postData.post.title : ""} required />
+                        <input type="text" onChange={handleChange} className="rounded-lg border-2 border-gray-300 p-2 w-full" name="title" id="title" defaultValue={canEdit ? postData.post.title : ""} required />
                     </div>
                     <div>
                         <label className="text-xl text-gray-600">Rhythm</label>
-                        <select id='rhythm' name="rhythm" onLoad={handleChange} onChange={handleChange} className="w-full py-4 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" defaultValue={rhythmId} >
+                        <select id='rhythm' name="rhythm" onChange={handleChange} className="w-full py-4 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" defaultValue={rhythmId} >
                 
                                     {(rhythmData.rhythms.map((rhythm, index)=> {
                                         return (<option key={index} value={rhythm._id}>{rhythm.name}</option>)
@@ -113,14 +122,14 @@ return (
                         <label className="text-xl text-gray-600">Content<span className="text-red-500">*</span></label>
                         <div>
                         
-                        <textarea defaultValue={postData ? postData.post.content : ""} onLoad={handleChange} onChange={handleChange}  id='content' name="content" className="rounded-lg border-2 border-gray-500">
+                        <textarea defaultValue={postData ? postData.post.content : ""} onChange={handleChange}  id='content' name="content" className="rounded-lg border-2 border-gray-500">
                                 
                         </textarea>
                         </div>
                     </div>
                     <div className="mb-8">
                         <label className="text-xl text-gray-600">URL</label>
-                        <input type="text" onLoad={handleChange} onChange={handleChange} className="rounded-lg border-2 border-gray-300 p-2 w-full" defaultValue={postData.post.url} name="url" id="url" placeholder="(Optional)"/>
+                        <input type="text" onChange={handleChange} className="rounded-lg border-2 border-gray-300 p-2 w-full" defaultValue={postData.post.url} name="url" id="url" placeholder="(Optional)"/>
                     </div>
                     <div className="flex flex-row-reverse p-1">
                         <button type="submit" className="w-3/12 rounded-lg p-3 bg-black text-white hover:bg-yellow-500" required>Submit</button>
