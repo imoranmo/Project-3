@@ -53,11 +53,11 @@ const Profile = () => {
    <div class="flex items-center space-x-3 font-semibold text-gray-900 text-2xl leading-8 mb-4 underline">
      </div>
      {/* {data.user.instrument} */}
-     {data.user.instruments.map((instrument) => {
+     {data.user.instruments ? (data.user.instruments.map((instrument) => {
            return (<div class="grid grid-cols-3 gap-1 mb-2">
                <div class="rounded-lg bg-yellow-500 text-center">{instrument.name}</div>
            </div>)
-     })}
+     })) : (<div class="grid grid-cols-3 gap-1 mb-2"><div class="rounded-lg bg-yellow-500 text-center">Kazoo</div></div>)}
  
        </div>
        <div className="ml-20 w-2/4 mb-10 mt-24">
