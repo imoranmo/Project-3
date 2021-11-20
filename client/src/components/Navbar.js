@@ -9,7 +9,7 @@ const Navbar = () => {
   const logout = (event) => {
     event.preventDefault();
     Auth.logout();
-    return <Redirect to="/login" />;
+    return window.location = "/login";
   };
   return (
     
